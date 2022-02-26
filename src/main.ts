@@ -2,7 +2,8 @@
 
 import {
     DEFAULT_EXECA_STDIO,
-    DEFAULT_INSTALLED_PACKAGES, DEFAULT_LOG_LEVEL,
+    DEFAULT_INSTALLED_PACKAGES,
+    DEFAULT_LOG_LEVEL,
     PREFERED_PACKAGE_SYSTEM
 } from "./constants/runtime";
 
@@ -13,9 +14,13 @@ import { initFiles } from "./initFiles";
 import LogService from "./fi/nor/ts/LogService";
 import { parseLogLevel } from "./fi/nor/ts/types/LogLevel";
 
-LogService.setLogLevel( parseLogLevel(DEFAULT_LOG_LEVEL) );
-
 const LOG = LogService.createLogger('main');
+
+const logLevel = parseLogLevel(DEFAULT_LOG_LEVEL);
+if (logLevel) {
+    LOG.debug(`Setting log level as `, logLevel);
+    LogService.setLogLevel( logLevel );
+}
 
 export async function main () : Promise<void> {
 
@@ -30,6 +35,8 @@ export async function main () : Promise<void> {
         stdio: DEFAULT_EXECA_STDIO,
         cwd: process.cwd()
     };
+
+    LOG.debug(`Initial install config: `, installConfig);
 
     const pkgManager : SupportedPackageManagers = await getPackageManager(installConfig);
 

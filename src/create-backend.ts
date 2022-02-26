@@ -2,4 +2,8 @@
 
 import { main } from "./main";
 
-main().catch(console.error);
+console.log(`Running main()`);
+
+main().catch((err) => {
+    console.error(err);
+});

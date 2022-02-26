@@ -29,7 +29,15 @@ console.log(`Building with options:
   BUILD_WITH_FULL_USAGE       = '${BUILD_WITH_FULL_USAGE}'`);
 
 export default {
-    input: 'src/main.ts',
+    input: 'src/create-backend.ts',
+    external: [
+        'node:buffer',
+        'node:path',
+        'node:child_process',
+        'node:process',
+        'node:os',
+        'node:url'
+    ],
     plugins: [
 
         // See also ./src/runtime-constants.ts

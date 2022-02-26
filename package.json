@@ -1,12 +1,10 @@
 {
   "name": "@heusalagroup/create-backend",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Create our TypeScript enabled backend projects",
   "main": "index.js",
-  "bin": "./dist/main.js",
+  "bin": "./dist/create-backend.js",
   "scripts": {
-    "start-prod": "node ./dist/main.js",
-    "start": "ts-node ./src/main.ts",
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
