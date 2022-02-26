@@ -13,6 +13,7 @@ import { initPackage } from "./initPackage";
 import { initFiles } from "./initFiles";
 import LogService from "./fi/nor/ts/LogService";
 import { parseLogLevel } from "./fi/nor/ts/types/LogLevel";
+import { mkdirp } from "./mkdirp";
 
 const LOG = LogService.createLogger('main');
 
@@ -24,6 +25,19 @@ if (logLevel) {
 
 export async function main () : Promise<void> {
 
+    const path = require("path");
+
+    let cwd : string = process.cwd();
+
+    const dirname = process.argv.slice(2).filter((arg : string) => !arg.startsWith("-")).shift();
+
+    if (dirname) {
+        const newCwd = path.resolve(cwd, dirname);
+        mkdirp(newCwd);
+        process.chdir(newCwd);
+        cwd = newCwd;
+    }
+
     const installConfig : InstallConfig = {
         dev: false,
         exact: false,
@@ -33,7 +47,7 @@ export async function main () : Promise<void> {
         global: false,
         prefer: PREFERED_PACKAGE_SYSTEM,
         stdio: DEFAULT_EXECA_STDIO,
-        cwd: process.cwd()
+        cwd: cwd
     };
 
     LOG.debug(`Initial install config: `, installConfig);
@@ -45,7 +59,8 @@ export async function main () : Promise<void> {
 
     LOG.debug(`Installing packages: `, DEFAULT_INSTALLED_PACKAGES);
     await install(
-        DEFAULT_INSTALLED_PACKAGES
+        DEFAULT_INSTALLED_PACKAGES,
+        installConfig
     );
 
     LOG.debug(`Initializing files using `, pkgManager);

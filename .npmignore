@@ -1,7 +1,8 @@
-src
-babel.config.json
-rollup.config.js
-tsconfig.json
+/src
+/babel.config.json
+/rollup.config.js
+/tsconfig.json
+
 .git
 .gitmodules
 .idea

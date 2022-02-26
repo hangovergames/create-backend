@@ -2,9 +2,9 @@
 
 import { SupportedPackageManagers } from "pkg-install";
 import { mkdirp } from "./mkdirp";
-import LogService from "./fi/nor/ts/LogService";
+import { LogService } from "./fi/nor/ts/LogService";
 import { copyFile } from "./copyFile";
-import path from "path";
+import fs from "fs";
 
 const LOG = LogService.createLogger('initFiles');
 
@@ -19,14 +19,15 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
         return;
     }
 
-    const templatesDir = path.resolve(__dirname, "templates");
+    const templatesDir = path.resolve(__dirname, "../templates");
+
+    const mainName = path.basename(path.dirname(pkgPath));
 
     const pkgString = fs.readFileSync(pkgPath, "utf8");
     const pkgJSON = JSON.parse(pkgString);
 
     const mainField = pkgJSON?.main ?? "index.js";
     const mainPath = path.resolve(mainField);
-    const mainName = path.basename(mainPath);
     const mainDir = path.dirname(mainPath);
 
     const srcDir = path.resolve(mainDir, './src');
@@ -46,6 +47,31 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     copyFile( mainName, path.resolve(templatesDir, "./src/constants/runtime.ts"), path.resolve(srcConstantsDir, "./runtime.ts"));
     copyFile( mainName, path.resolve(templatesDir, "./src/controllers/BackendController.ts"), path.resolve(srcControllersDir, "./BackendController.ts"));
     copyFile( mainName, path.resolve(templatesDir, "./src/main.ts"), path.resolve(srcDir, "./main.ts"));
-    copyFile( mainName, path.resolve(templatesDir, "./src/project-name.ts"), path.resolve(srcDir, `./${mainName}.ts`));
+
+    const mainFileName = `./${mainName}.ts`;
+    const mainSrcFileName = `./src/${mainName}.ts`;
+
+    copyFile( mainName, path.resolve(templatesDir, "./src/project-name.ts"), path.resolve(srcDir, mainFileName));
+
+    const distFile = `./dist/${mainName}.js`;
+
+    const newPkgJson = {
+        ...pkgJSON,
+        private: true,
+        main: distFile,
+        bin: {
+            [mainName]: distFile
+        },
+        scripts: {
+            ...pkgJSON.scripts,
+            "start-prod": `node ${distFile}`,
+            "start": `ts-node ${mainSrcFileName}`,
+            "build": "rollup -c"
+        }
+    };
+
+    const newPkgJsonString = JSON.stringify(newPkgJson, null, 2);
+
+    fs.writeFileSync(pkgPath, newPkgJsonString, {encoding: 'utf8'});
 
 }
