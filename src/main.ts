@@ -10,6 +10,9 @@ import { getPackageManager, install, SupportedPackageManagers } from "pkg-instal
 import { InstallConfig } from "pkg-install/lib/config";
 import { initPackage } from "./initPackage";
 import { initFiles } from "./initFiles";
+import LogService from "./fi/nor/ts/LogService";
+
+const LOG = LogService.createLogger('main');
 
 export async function main () : Promise<void> {
 
@@ -27,12 +30,15 @@ export async function main () : Promise<void> {
 
     const pkgManager : SupportedPackageManagers = await getPackageManager(installConfig);
 
+    LOG.debug(`Initializing package using `, pkgManager);
     await initPackage(pkgManager);
 
+    LOG.debug(`Installing packages: `, DEFAULT_INSTALLED_PACKAGES);
     await install(
         DEFAULT_INSTALLED_PACKAGES
     );
 
+    LOG.debug(`Initializing files using `, pkgManager);
     await initFiles(pkgManager);
 
 }

@@ -1,6 +1,6 @@
 {
-  "name": "@hangovergames/create-backend",
-  "version": "0.0.1",
+  "name": "@heusalagroup/create-backend",
+  "version": "0.0.4",
   "description": "Create our TypeScript enabled backend projects",
   "main": "index.js",
   "bin": "./dist/main.js",

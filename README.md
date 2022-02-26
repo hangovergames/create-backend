@@ -1,7 +1,7 @@
-# create-backend
+# @heusalagroup/create-backend
 
-NPM package creation template module for our TypeScript REST backends
+Create TypeScript enabled REST backends:
 
 ```
-
+npm init @heusalagroup/backend ./foo-backend
 ```
