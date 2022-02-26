@@ -1,6 +1,6 @@
 {
   "name": "@heusalagroup/create-backend",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Create our TypeScript enabled backend projects",
   "main": "index.js",
   "bin": "./dist/create-backend.js",
