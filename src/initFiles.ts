@@ -110,6 +110,10 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
         LOG.warn(`Warning! No changes to package.json detected`);
     }
 
+    LOG.debug(`Initializing git sub module: sendanor/typescript from main branch`);
+    SyncGitUtils.initSubModule('git@github.com:sendanor/typescript.git', 'src/fi/nor/ts', 'main');
+
+    LOG.debug(`Adding files to git`);
     SyncGitUtils.addFiles(
         [
             "./LICENSE",
@@ -125,8 +129,5 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
             "./src"
         ]
     );
-
-    LOG.debug(`Initializing git sub module: sendanor/typescript from main branch`);
-    SyncGitUtils.initSubModule('git@github.com:sendanor/typescript.git', 'src/fi/nor/ts', 'main');
 
 }

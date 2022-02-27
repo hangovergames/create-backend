@@ -1386,7 +1386,7 @@ L.writeTextFile(t,r)}static copyTextFileWithReplacementsIfMissing(e,t,n){L.fileE
 class Jc{static getGitDir(e){let t=e,n=t;do{if(Yc.debug("getGitDir: Searching git directory from ",t),t=n,L.fileExists(
 C.default.resolve(t,".git")))return t}while((n=C.default.dirname(t))!==t)}static initGit(){var e=Jc.getGitDir(
 process.cwd());e?Yc.warn("Warning! Git directory already exists: ",e):(Yc.debug("Creating git directory"),oe("git",[
-"init"],{stdio:wa}))}static addFiles(e){var t=he(e)?[e]:e;Yc.debug("gitAdd: Adding file: ",e),oe("git",["add",...t],{
+"init"],{stdio:wa}))}static addFiles(e){var t=he(e)?[e]:e;Yc.debug("addFiles: Adding files: ",e),oe("git",["add",...t],{
 stdio:wa})}static addSubModule(e,t){L.fileExists(t)?Yc.warn("Warning! Git sub module directory already exists: ",t):oe(
 "git",["submodule","add",e,t],{stdio:wa})}static setSubModuleBranch(e,t){oe("git",["config","-f",".gitmodules",
 `submodule.${e}.branch`,t],{stdio:wa})}static initSubModule(e,t,n){var r=C.default.dirname(t);Yc.debug(
@@ -1425,9 +1425,9 @@ L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./src/controllers/BackendCo
 "package.json was invalid");let e=null!=(r=null==c?void 0:c.scripts)?r:{},t=(_e(e)||(e={}),null!=(o=null==c?void 0:c.bin
 )?o:{});_e(t)||(t={}),a=F(F({},c),{},{private:!0,main:u,bin:F(F({},t),{},{[s]:u}),scripts:F(F({},e),{},{
 "start-prod":"node "+u,start:"ts-node "+i,build:"rollup -c"})}),Lu(a,c)?Qc.warn(
-"Warning! No changes to package.json detected"):L.writeJsonFile(n,a),Jc.addFiles(["./LICENSE","./README.md",
-"./.gitignore","./Dockerfile","./docker-compose.yml","./babel.config.json","./rollup.config.js","./tsconfig.json",
-"./package.json","./package-lock.json","./src"]),Qc.debug(
+"Warning! No changes to package.json detected"):L.writeJsonFile(n,a),Qc.debug(
 "Initializing git sub module: sendanor/typescript from main branch"),Jc.initSubModule(
-"git@github.com:sendanor/typescript.git","src/fi/nor/ts","main")}else Qc.warn(
+"git@github.com:sendanor/typescript.git","src/fi/nor/ts","main"),Qc.debug("Adding files to git"),Jc.addFiles([
+"./LICENSE","./README.md","./.gitignore","./Dockerfile","./docker-compose.yml","./babel.config.json",
+"./rollup.config.js","./tsconfig.json","./package.json","./package-lock.json","./src"])}else Qc.warn(
 "initFiles: Warning! package.json did not exist: ",n);return void await 0}}().catch(e=>{console.error(e)});

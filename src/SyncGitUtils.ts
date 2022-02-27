@@ -62,7 +62,7 @@ export class SyncGitUtils {
 
         const files = isString(filePath) ? [ filePath ] : filePath;
 
-        LOG.debug(`gitAdd: Adding file: `, filePath);
+        LOG.debug(`addFiles: Adding files: `, filePath);
         execa(
             'git',
             [ "add", ...files ],
