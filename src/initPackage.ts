@@ -7,13 +7,13 @@ import LogService from "./fi/nor/ts/LogService";
 
 const LOG = LogService.createLogger('initPackage');
 
-export function initPackage (pkgManager : SupportedPackageManagers) {
+export async function initPackage (pkgManager : SupportedPackageManagers) : Promise<void> {
 
     const args = process.argv.slice(2).filter((arg : string) => arg.startsWith("-"));
 
     LOG.debug(`Executing: `, pkgManager, "init", ...args);
 
-    return execa(
+    await execa(
         pkgManager,
         [ "init", ...args ],
         {

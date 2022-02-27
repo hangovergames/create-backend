@@ -9,12 +9,10 @@ import {
 
 import { getPackageManager, install, SupportedPackageManagers } from "pkg-install";
 import { InstallConfig } from "pkg-install/lib/config";
-import { initPackage } from "./initPackage";
 import { initFiles } from "./initFiles";
 import { LogService } from "./fi/nor/ts/LogService";
 import { parseLogLevel } from "./fi/nor/ts/types/LogLevel";
 import { SyncFileUtils } from "./fi/nor/ts/SyncFileUtils";
-import { SyncGitUtils } from "./SyncGitUtils";
 
 const LOG = LogService.createLogger('main');
 

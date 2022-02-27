@@ -9,7 +9,7 @@ import { isString } from "./fi/nor/ts/modules/lodash";
 
 const LOG = LogService.createLogger('SyncGitUtils');
 
-export class SyncGitUtils {
+export class GitUtils {
 
     /**
      * Returns the git directory path
@@ -39,50 +39,32 @@ export class SyncGitUtils {
 
     }
 
-    static initGit () {
+    static async initGit () {
 
-        const currentGitDir = SyncGitUtils.getGitDir(process.cwd());
+        const currentGitDir = GitUtils.getGitDir(process.cwd());
 
         if (!currentGitDir) {
             LOG.debug(`Creating git directory`);
-            execa(
-                'git',
-                [ "init" ],
-                {
-                    stdio: DEFAULT_EXECA_STDIO
-                }
-            );
+            await GitUtils._git([ "init" ]);
         } else {
             LOG.warn(`Warning! Git directory already exists: `, currentGitDir);
         }
 
     }
 
-    static addFiles (filePath: string | string[]) {
+    static async addFiles (filePath: string | string[]) {
 
         const files = isString(filePath) ? [ filePath ] : filePath;
 
         LOG.debug(`addFiles: Adding files: `, filePath);
-        execa(
-            'git',
-            [ "add", ...files ],
-            {
-                stdio: DEFAULT_EXECA_STDIO
-            }
-        );
+        await GitUtils._git([ "add", ...files ]);
 
     }
 
-    static commit (message: string) {
+    static async commit (message: string) {
 
         LOG.debug(`commit with: `, message);
-        execa(
-            'git',
-            [ "commit", '-m', message ],
-            {
-                stdio: DEFAULT_EXECA_STDIO
-            }
-        );
+        await GitUtils._git([ "commit", '-m', message ]);
 
     }
 
@@ -91,52 +73,34 @@ export class SyncGitUtils {
      * git branch -M main
      * @param newName
      */
-    static renameMainBranch (newName: string) {
+    static async renameMainBranch (newName: string) {
 
         LOG.debug(`rename branch: `, newName);
-        execa(
-            'git',
-            [ "branch", '-M', newName ],
-            {
-                stdio: DEFAULT_EXECA_STDIO
-            }
-        );
+        await GitUtils._git([ "branch", '-M', newName ]);
 
     }
 
-    static addSubModule (
+    static async addSubModule (
         moduleUrl : string,
         modulePath : string
     ) {
 
         if (!SyncFileUtils.fileExists(modulePath)) {
-            execa(
-                'git',
-                [ "submodule", 'add', moduleUrl, modulePath ],
-                {
-                    stdio: DEFAULT_EXECA_STDIO
-                }
-            );
+            await GitUtils._git([ "submodule", 'add', moduleUrl, modulePath ]);
         } else {
             LOG.warn(`Warning! Git sub module directory already exists: `, modulePath);
         }
 
     }
 
-    static setSubModuleBranch (
+    static async setSubModuleBranch (
         modulePath : string,
         moduleBranch : string
     ) {
-        execa(
-            'git',
-            [ "config", '-f', '.gitmodules', `submodule.${modulePath}.branch`, moduleBranch ],
-            {
-                stdio: DEFAULT_EXECA_STDIO
-            }
-        );
+        await GitUtils._git([ "config", '-f', '.gitmodules', `submodule.${modulePath}.branch`, moduleBranch ]);
     }
 
-    static initSubModule (
+    static async initSubModule (
         moduleUrl: string,
         modulePath: string,
         moduleBranch: string
@@ -150,11 +114,25 @@ export class SyncGitUtils {
 
         // git submodule add git@github.com:sendanor/typescript.git src/fi/nor/ts
         LOG.debug(`initSubModule: Adding submodule: `, moduleUrl, modulePath)
-        SyncGitUtils.addSubModule(moduleUrl, modulePath);
+        await GitUtils.addSubModule(moduleUrl, modulePath);
 
         // git config -f .gitmodules submodule.src/fi/nor/ts.branch main
         LOG.debug(`initSubModule: Configuring branch for `, moduleUrl, modulePath, ': ', moduleBranch);
-        SyncGitUtils.setSubModuleBranch(modulePath, moduleBranch);
+        await GitUtils.setSubModuleBranch(modulePath, moduleBranch);
+
+    }
+
+    private static async _git (
+        args: string[]
+    ) : Promise<void> {
+
+        await execa(
+            'git',
+            args,
+            {
+                stdio: DEFAULT_EXECA_STDIO
+            }
+        );
 
     }
 

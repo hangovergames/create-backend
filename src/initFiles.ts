@@ -6,8 +6,7 @@ import { camelCase } from "lodash";
 import { SyncFileUtils } from "./fi/nor/ts/SyncFileUtils";
 import { isReadonlyJsonObject } from "./fi/nor/ts/Json";
 import { isEqual } from "./fi/nor/ts/modules/lodash";
-import { SyncGitUtils } from "./SyncGitUtils";
-import path from "path";
+import { GitUtils } from "./GitUtils";
 import { initPackage } from "./initPackage";
 
 const LOG = LogService.createLogger('initFiles');
@@ -16,12 +15,12 @@ const LOG = LogService.createLogger('initFiles');
  *
  * @param pkgManager
  */
-export function initFiles (pkgManager : SupportedPackageManagers) {
+export async function initFiles (pkgManager : SupportedPackageManagers) {
 
     const path = require("path");
 
     LOG.debug(`Initializing package.json using `, pkgManager);
-    initPackage(pkgManager);
+    await initPackage(pkgManager);
 
     const packageJsonPath = path.resolve("package.json");
     if ( !SyncFileUtils.fileExists(packageJsonPath) ) {
@@ -54,7 +53,7 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     };
 
     LOG.debug(`Initializing git if necessary`);
-    SyncGitUtils.initGit();
+    await GitUtils.initGit();
 
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./LICENSE"), path.resolve(pkgDir, "./LICENSE"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./README.md"), path.resolve(pkgDir, "./README.md"), replacements);
@@ -115,10 +114,10 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     }
 
     LOG.debug(`Initializing git sub module: sendanor/typescript from main branch`);
-    SyncGitUtils.initSubModule('git@github.com:sendanor/typescript.git', 'src/fi/nor/ts', 'main');
+    await GitUtils.initSubModule('git@github.com:sendanor/typescript.git', 'src/fi/nor/ts', 'main');
 
     LOG.debug(`Adding files to git`);
-    SyncGitUtils.addFiles(
+    await GitUtils.addFiles(
         [
             "./LICENSE",
             "./README.md",
@@ -135,9 +134,9 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     );
 
     LOG.debug(`Initial git commit`);
-    SyncGitUtils.commit('first commit');
+    await GitUtils.commit('first commit');
 
     LOG.debug(`Renaming main git branch`);
-    SyncGitUtils.renameMainBranch('main');
+    await GitUtils.renameMainBranch('main');
 
 }

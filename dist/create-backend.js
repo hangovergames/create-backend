@@ -16,11 +16,11 @@ return e.code="ENOENT",e}function U(e,t){var n=t.colon||Ke,r=[""],o=(o=t.path||p
 return Ve&&(o.unshift(process.cwd()),r=(i=t.pathExt||process.env.PATHEXT||".EXE;.CMD;.BAT;.COM").split(n),
 -1!==e.indexOf(".")&&""!==r[0]&&r.unshift("")),{env:o=e.match(/\//)||Ve&&e.match(/\\/)?[""]:o,ext:r,extExe:i}}
 function W(e,t){var n=process.cwd(),r=null!=e.options.cwd;if(r)try{process.chdir(e.options.cwd)}catch(e){}let o;try{
-o=ka.sync(e.command,{path:(e.options.env||process.env)[Ta],pathExt:t?Aa.delimiter:void 0})}catch(e){}finally{
-process.chdir(n)}return o=o&&Aa.resolve(r?e.options.cwd:"",o)}function z(e,t){return Object.assign(new Error(
+o=Ta.sync(e.command,{path:(e.options.env||process.env)[Pa],pathExt:t?ka.delimiter:void 0})}catch(e){}finally{
+process.chdir(n)}return o=o&&ka.resolve(r?e.options.cwd:"",o)}function z(e,t){return Object.assign(new Error(
 `${t} ${e.command} ENOENT`),{code:"ENOENT",errno:"ENOENT",syscall:t+" "+e.command,path:e.command,spawnargs:e.args})}
-function q(e,t){return Wa&&1===e&&!t.file?z(t.original,"spawn"):null}function V(e,t,n){e=Ge(e,t,n),t=za.spawn(e.command,
-e.args,e.options);return qa.hookChildProcess(t,e),t}function H(e){function t(){return t.called?t.value:(t.called=!0,
+function q(e,t){return za&&1===e&&!t.file?z(t.original,"spawn"):null}function V(e,t,n){e=Ge(e,t,n),t=qa.spawn(e.command,
+e.args,e.options);return Va.hookChildProcess(t,e),t}function H(e){function t(){return t.called?t.value:(t.called=!0,
 t.value=e.apply(this,arguments))}return t.called=!1,t}function K(e){function t(){if(t.called)throw new Error(t.onceError
 );return t.called=!0,t.value=e.apply(this,arguments)}var n=e.name||"Function wrapped with `once`";
 return t.onceError=n+" shouldn't be called more than once",t.called=!1,t}function Z(e,o){if(!e)return Promise.reject(
@@ -29,10 +29,10 @@ const r=e=>{e&&(e.bufferedData=u.getBufferedValue()),n(e)};(u=function(){var r,o
 ,u=ct(i[i.length-1]||ut)&&i.pop()||ut;if((i=Array.isArray(i[0])?i[0]:i).length<2)throw new Error(
 "pump requires two streams per minimum");return o=i.map(function(e,t){var n=t<i.length-1;return ft(e,n,0<t,function(e){
 r=r||e,e&&o.forEach(pt),n||(o.forEach(pt),u(r))})}),i.reduce(ht)}(e,(e=>{const t=(e=Object.assign({},e)).array;
-let n=e.encoding;const r="buffer"===n;let o=!1,i=(t?o=!(n||r):n=n||"utf8",r&&(n=null),0);const u=[],a=new Va({
+let n=e.encoding;const r="buffer"===n;let o=!1,i=(t?o=!(n||r):n=n||"utf8",r&&(n=null),0);const u=[],a=new Ha({
 objectMode:o});return n&&a.setEncoding(n),a.on("data",e=>{u.push(e),o?i=u.length:i+=e.length}),a.getBufferedValue=(
 )=>t?u:r?Buffer.concat(u,i):u.join(""),a.getBufferedLength=()=>i,a})(o),e=>{e?r(e):t()})).on("data",()=>{
-u.getBufferedLength()>i&&r(new Ha)})}).then(()=>u.getBufferedValue())}function X(e,t){if(e)return e.errname(t);if(t<0
+u.getBufferedLength()>i&&r(new Xa)})}).then(()=>u.getBufferedValue())}function X(e,t){if(e)return e.errname(t);if(t<0
 )return"Unknown system error "+t;throw new Error("err >= 0")}function Y(e){var t,n=-1,r=null==e?0:e.length;for(
 this.clear();++n<r;)t=e[n],this.set(t[0],t[1])}function J(e){var t,n=-1,r=null==e?0:e.length;for(this.clear();++n<r;
 )t=e[n],this.set(t[0],t[1])}function Q(e){var t,n=-1,r=null==e?0:e.length;for(this.clear();++n<r;)t=e[n],this.set(t[0],
@@ -54,61 +54,61 @@ n=o[e=e];e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0
 function(e){Object.defineProperty(r,e,Object.getOwnPropertyDescriptor(o,e))});return r}function he(e,t){
 var n=e.options.env||process.env,r=process.cwd(),o=null!=e.options.cwd,
 i=o&&void 0!==process.chdir&&!process.chdir.disabled;if(i)try{process.chdir(e.options.cwd)}catch(e){}let u;try{
-u=dc.sync(e.command,{path:n[gc({env:n})],pathExt:t?hc.delimiter:void 0})}catch(e){}finally{i&&process.chdir(r)}
-return u=u&&hc.resolve(o?e.options.cwd:"",u)}function de(e,t){return Object.assign(new Error(`${t} ${e.command} ENOENT`)
+u=gc.sync(e.command,{path:n[mc({env:n})],pathExt:t?dc.delimiter:void 0})}catch(e){}finally{i&&process.chdir(r)}
+return u=u&&dc.resolve(o?e.options.cwd:"",u)}function de(e,t){return Object.assign(new Error(`${t} ${e.command} ENOENT`)
 ,{code:"ENOENT",errno:"ENOENT",syscall:t+" "+e.command,path:e.command,spawnargs:e.args})}function ge(e,t){
-return Sc&&1===e&&!t.file?de(t.original,"spawn"):null}function me(e,t,n){e=De(e,t,n),t=Ic.spawn(e.command,e.args,
-e.options);return Ac.hookChildProcess(t,e),t}function ye(e={}){var{env:e=process.env,platform:t=process.platform}=e;
+return Ic&&1===e&&!t.file?de(t.original,"spawn"):null}function me(e,t,n){e=De(e,t,n),t=Ac.spawn(e.command,e.args,
+e.options);return kc.hookChildProcess(t,e),t}function ye(e={}){var{env:e=process.env,platform:t=process.platform}=e;
 return"win32"!==t?"PATH":Object.keys(e).reverse().find(e=>"PATH"===e.toUpperCase())||"Path"}async function ve(r,c){if(!r
 )throw new Error("Expected a stream");const o=(c=v({maxBuffer:1/0},c)).maxBuffer,i=(e=>{const t=(e=v({},c)).array;
-let n=e.encoding;const r="buffer"===n;let o=!1;t?o=!(n||r):n=n||"utf8",r&&(n=null);const i=new Gc({objectMode:o});
+let n=e.encoding;const r="buffer"===n;let o=!1;t?o=!(n||r):n=n||"utf8",r&&(n=null);const i=new Dc({objectMode:o});
 n&&i.setEncoding(n);let u=0;const a=[];return i.on("data",e=>{a.push(e),o?u=a.length:u+=e.length}),i.getBufferedValue=(
 )=>t?a:r?Buffer.concat(a,u):a.join(""),i.getBufferedLength=()=>u,i})();return await new Promise((e,t)=>{const n=e=>{
-e&&i.getBufferedLength()<=Dc.MAX_LENGTH&&(e.bufferedData=i.getBufferedValue()),t(e)};(async()=>{try{await Wc(r,i),e()
-}catch(e){n(e)}})(),i.on("data",()=>{i.getBufferedLength()>o&&n(new zc)})}),i.getBufferedValue()}function _e(e,t,n){
+e&&i.getBufferedLength()<=Uc.MAX_LENGTH&&(e.bufferedData=i.getBufferedValue()),t(e)};(async()=>{try{await zc(r,i),e()
+}catch(e){n(e)}})(),i.on("data",()=>{i.getBufferedLength()>o&&n(new qc)})}),i.getBufferedValue()}function _e(e,t,n){
 var r,o,i,u,a,c,s,l,f;[n,o,i={}]=[e,t,n],n=(f=Ru._parse(n,o,i)).command,o=f.args,(i=v({maxBuffer:1e8,buffer:!0,
-stripFinalNewline:!0,extendEnv:!0,preferLocal:!1,localDir:(i=f.options).cwd||ja.default.cwd(),
-execPath:ja.default.execPath,encoding:"utf8",reject:!0,cleanup:!0,all:!1,windowsHide:!0},i)).env=({env:u,extendEnv:l,
-preferLocal:a,localDir:c,execPath:s}=i,l=l?v(v({},ja.default.env),u):u,a?function(e){let{env:t=ja.default.env}=e,
+stripFinalNewline:!0,extendEnv:!0,preferLocal:!1,localDir:(i=f.options).cwd||Ea.default.cwd(),
+execPath:Ea.default.execPath,encoding:"utf8",reject:!0,cleanup:!0,all:!1,windowsHide:!0},i)).env=({env:u,extendEnv:l,
+preferLocal:a,localDir:c,execPath:s}=i,l=l?v(v({},Ea.default.env),u):u,a?function(e){let{env:t=Ea.default.env}=e,
 n=function(e,t){var n,r,o,i;if(null==e)return{};if(n=function(e,t){var n,r,o,i;if(null==e)return{};for(n={},
 r=Object.keys(e),i=0;i<r.length;i++)o=r[i],0<=t.indexOf(o)||(n[o]=e[o]);return n}(e,t),Object.getOwnPropertySymbols)for(
 i=Object.getOwnPropertySymbols(e),o=0;o<i.length;o++)r=i[o],0<=t.indexOf(r)||Object.prototype.propertyIsEnumerable.call(
-e,r)&&(n[r]=e[r]);return n}(e,kc);e=ye({env:t=v({},t)});return n.path=t[e],t[e]=function(e={}){const{
-cwd:t=ja.default.cwd(),path:n=ja.default.env[ye()],execPath:r=ja.default.execPath}=e;let o;
-e=t instanceof URL?Ea.default.fileURLToPath(t):t;let i=wa.default.resolve(e);const u=[];for(;o!==i;)u.push(
-wa.default.join(i,"node_modules/.bin")),o=i,i=wa.default.resolve(i,"..");return u.push(wa.default.resolve(e,r,"..")),[
-...u,n].join(wa.default.delimiter)}(n),t}({env:l,cwd:c,execPath:s}):l),i.stdio=(t=>{var n,e;if(t){const r=t.stdio;if(
-void 0===r)return $c.map(e=>t[e]);if(n=t,$c.some(e=>void 0!==n[e]))throw new Error(
-"It's not possible to provide `stdio` in combination with one of "+$c.map(e=>`\`${e}\``).join(", "));if(
-"string"==typeof r)return r;if(Array.isArray(r))return e=Math.max(r.length,$c.length),Array.from({length:e},(e,t)=>r[t])
+e,r)&&(n[r]=e[r]);return n}(e,Tc);e=ye({env:t=v({},t)});return n.path=t[e],t[e]=function(e={}){const{
+cwd:t=Ea.default.cwd(),path:n=Ea.default.env[ye()],execPath:r=Ea.default.execPath}=e;let o;
+e=t instanceof URL?Oa.default.fileURLToPath(t):t;let i=xa.default.resolve(e);const u=[];for(;o!==i;)u.push(
+xa.default.join(i,"node_modules/.bin")),o=i,i=xa.default.resolve(i,"..");return u.push(xa.default.resolve(e,r,"..")),[
+...u,n].join(xa.default.delimiter)}(n),t}({env:l,cwd:c,execPath:s}):l),i.stdio=(t=>{var n,e;if(t){const r=t.stdio;if(
+void 0===r)return Gc.map(e=>t[e]);if(n=t,Gc.some(e=>void 0!==n[e]))throw new Error(
+"It's not possible to provide `stdio` in combination with one of "+Gc.map(e=>`\`${e}\``).join(", "));if(
+"string"==typeof r)return r;if(Array.isArray(r))return e=Math.max(r.length,Gc.length),Array.from({length:e},(e,t)=>r[t])
 throw new TypeError(`Expected \`stdio\` to be of type \`string\` or \`Array\`, got \`${typeof r}\``)}})(i),
-"win32"===ja.default.platform&&"cmd"===wa.default.basename(n,".exe")&&o.unshift("/q");const p={file:n,args:o,options:i,
-parsed:f},h=(u=e,a=t,Yc(u,a).join(" ")),d=(c=e,s=t,Yc(c,s).map(e=>(e=>"string"!=typeof e||Jc.test(e)?e:`"${e.replace(Qc,
+"win32"===Ea.default.platform&&"cmd"===xa.default.basename(n,".exe")&&o.unshift("/q");const p={file:n,args:o,options:i,
+parsed:f},h=(u=e,a=t,Jc(u,a).join(" ")),d=(c=e,s=t,Jc(c,s).map(e=>(e=>"string"!=typeof e||Qc.test(e)?e:`"${e.replace(es,
 '\\"')}"`)(e)).join(" "));if(void 0!==(l=p.options.timeout)&&(!Number.isFinite(l)||l<0))throw new TypeError(
 `Expected the \`timeout\` option to be a non-negative integer, got \`${l}\` (${typeof l})`);let g;try{
-g=xa.default.spawn(p.file,p.args,p.options)}catch(e){return n=new xa.default.ChildProcess,o=Promise.reject(Bc({error:e,
-stdout:"",stderr:"",all:"",command:h,escapedCommand:d,parsed:p,timedOut:!1,isCanceled:!1,killed:!1})),Xc(n,o)}r=g,
+g=ja.default.spawn(p.file,p.args,p.options)}catch(e){return n=new ja.default.ChildProcess,o=Promise.reject($c({error:e,
+stdout:"",stderr:"",all:"",command:h,escapedCommand:d,parsed:p,timedOut:!1,isCanceled:!1,killed:!1})),Yc(n,o)}r=g,
 i=new Promise((n,t)=>{r.on("exit",(e,t)=>{n({exitCode:e,signal:t})}),r.on("error",e=>{t(e)}),r.stdin&&r.stdin.on("error"
 ,e=>{t(e)})}),f=((r,{timeout:t,killSignal:o="SIGTERM"},e)=>{if(0===t||void 0===t)return e;let i;var n=new Promise((e,n
 )=>{i=setTimeout(()=>{var e=o,t=n;r.kill(e),t(Object.assign(new Error("Timed out"),{timedOut:!0,signal:e}))},t)}),
 e=e.finally(()=>{clearTimeout(i)});return Promise.race([n,e])})(g,p.options,i);const m=(async(e,{cleanup:t,detached:n},r
-)=>{if(!t||n)return r;const o=Xu(()=>{e.kill()});return r.finally(()=>{o()})})(g,p.options,f),y={isCanceled:!1};g.kill=(
-(e,t="SIGTERM",n={})=>{var r,o=e(t),i=e,e=n;if([n,t,r]=[t,e.forceKillAfterTimeout,o],(
-n===Oa.default.constants.signals.SIGTERM||"string"==typeof n&&"SIGTERM"===n.toUpperCase())&&!1!==t&&r){n=(({
+)=>{if(!t||n)return r;const o=Xu(()=>{e.kill()});return r.finally(()=>{o()})})(g,p.options,f),y={isCanceled:!1};
+return g.kill=((e,t="SIGTERM",n={})=>{var r,o=e(t),i=e,e=n;if([n,t,r]=[t,e.forceKillAfterTimeout,o],(
+n===Sa.default.constants.signals.SIGTERM||"string"==typeof n&&"SIGTERM"===n.toUpperCase())&&!1!==t&&r){n=(({
 forceKillAfterTimeout:e=!0})=>{if(!0===e)return 5e3;if(!Number.isFinite(e)||e<0)throw new TypeError(
 `Expected the \`forceKillAfterTimeout\` option to be a non-negative integer, got \`${e}\` (${typeof e})`);return e})(e);
 const u=setTimeout(()=>{i("SIGKILL")},n);u.unref&&u.unref()}return o}).bind(null,g.kill.bind(g)),g.cancel=((e,t)=>{
-e.kill()&&(t.isCanceled=!0)}).bind(null,g,y),u=Cc(async()=>{var[{error:e,exitCode:t,signal:n,timedOut:r},o,i,u]=await(
-async({stdout:t,stderr:n,all:r},{encoding:o,buffer:e,maxBuffer:i},u)=>{var a=Hc(t,{encoding:o,buffer:e,maxBuffer:i}),
-c=Hc(n,{encoding:o,buffer:e,maxBuffer:i}),o=Hc(r,{encoding:o,buffer:e,maxBuffer:2*i});try{return await Promise.all([u,a,
-c,o])}catch(e){return Promise.all([{error:e,signal:e.signal,timedOut:e.timedOut},Vc(t,a),Vc(n,c),Vc(r,o)])}})(g,
-p.options,m),o=es(p.options,o),i=es(p.options,i),u=es(p.options,u);if(e||0!==t||null!==n){if(e=Bc({error:e,exitCode:t,
+e.kill()&&(t.isCanceled=!0)}).bind(null,g,y),u=Nc(async()=>{var[{error:e,exitCode:t,signal:n,timedOut:r},o,i,u]=await(
+async({stdout:t,stderr:n,all:r},{encoding:o,buffer:e,maxBuffer:i},u)=>{var a=Kc(t,{encoding:o,buffer:e,maxBuffer:i}),
+c=Kc(n,{encoding:o,buffer:e,maxBuffer:i}),o=Kc(r,{encoding:o,buffer:e,maxBuffer:2*i});try{return await Promise.all([u,a,
+c,o])}catch(e){return Promise.all([{error:e,signal:e.signal,timedOut:e.timedOut},Hc(t,a),Hc(n,c),Hc(r,o)])}})(g,
+p.options,m),o=ts(p.options,o),i=ts(p.options,i),u=ts(p.options,u);if(e||0!==t||null!==n){if(e=$c({error:e,exitCode:t,
 signal:n,stdout:o,stderr:i,all:u,command:h,escapedCommand:d,parsed:p,timedOut:r,
 isCanceled:y.isCanceled||!!p.options.signal&&p.options.signal.aborted,killed:g.killed}),p.options.reject)throw e;
 return e}return{command:h,escapedCommand:d,exitCode:0,stdout:o,stderr:i,all:u,failed:!1,timedOut:!1,isCanceled:!1,
 killed:!1}}),a=g,void 0!==(e=p.options.input)&&void 0!==a.stdin&&(
 null!==e&&"object"==typeof e&&"function"==typeof e.pipe?e.pipe(a.stdin):a.stdin.end(e)),g.all=((e,{all:t})=>{if(t&&(
-e.stdout||e.stderr)){const n=Nu();return e.stdout&&n.add(e.stdout),e.stderr&&n.add(e.stderr),n}})(g,p.options),Xc(g,u)}
+e.stdout||e.stderr)){const n=Nu();return e.stdout&&n.add(e.stdout),e.stderr&&n.add(e.stderr),n}})(g,p.options),Yc(g,u)}
 function be(e,t){if(e instanceof h)return e;if("string"!=typeof e)return null;if(e.length>Lu)return null;if(!((
 t=t&&"object"==typeof t?t:{loose:!!t,includePrerelease:!1}).loose?l[Bu]:l[Fu]).test(e))return null;try{return new h(e,t)
 }catch(e){return null}}function h(e,t){if(t&&"object"==typeof t||(t={loose:!!t,includePrerelease:!1}),e instanceof h){
@@ -146,25 +146,25 @@ r)&&(p=e)}),f.operator===a||f.operator===c)return!1;if((!p.operator||p.operator=
 p.operator===c&&u(e,p.semver))return!1}return!0}function Ne(e){
 return e&&"object"==typeof e&&"function"==typeof e.removeListener&&"function"==typeof e.emit&&"function"==typeof e.reallyExit&&"function"==typeof e.listeners&&"function"==typeof e.kill&&"number"==typeof e.pid&&"function"==typeof e.on
 }function Le(e){return qu.call(this,"Unreachable case: "+e)||this}function Me(e){for(var t in e)Vu.hasOwnProperty(t)||(
-Vu[t]=e[t])}function Fe(e,t){return{name:"SIGRT"+(t+1),number:Nc+t,action:"terminate",
-description:"Application-specific signal (realtime)",standard:"posix"}}function Be(){var e=65-Nc,e=Array.from({length:e}
-,Fe);return[...Lc,...e].map(Ue)}function $e(e,{name:t,number:n,description:r,supported:o,action:i,forced:u,standard:a}){
+Vu[t]=e[t])}function Fe(e,t){return{name:"SIGRT"+(t+1),number:Lc+t,action:"terminate",
+description:"Application-specific signal (realtime)",standard:"posix"}}function Be(){var e=65-Lc,e=Array.from({length:e}
+,Fe);return[...Mc,...e].map(Ue)}function $e(e,{name:t,number:n,description:r,supported:o,action:i,forced:u,standard:a}){
 return v(v({},e),{},{[t]:{name:t,number:n,description:r,supported:o,action:i,forced:u,standard:a}})}function Ge(e,t,n){
 t&&!Array.isArray(t)&&(n=t,t=null);e={command:e,args:t=t?t.slice(0):[],options:n=Object.assign({},n),file:void 0,
-original:{command:e,args:t}};return(n.shell?function(e){if(Ua)return e;var t=[e.command].concat(e.args).join(" ");
-return $a?(e.command="string"==typeof e.options.shell?e.options.shell:process.env.comspec||"cmd.exe",e.args=["/d","/s",
+original:{command:e,args:t}};return(n.shell?function(e){if(Wa)return e;var t=[e.command].concat(e.args).join(" ");
+return Ga?(e.command="string"==typeof e.options.shell?e.options.shell:process.env.comspec||"cmd.exe",e.args=["/d","/s",
 "/c",`"${t}"`],e.options.windowsVerbatimArguments=!0):(
 "string"==typeof e.options.shell?e.command=e.options.shell:"android"===process.platform?e.command="/system/bin/sh":e.command="/bin/sh"
-,e.args=["-c",t]),e}:function(e){var t,n;if(!$a)return e;if((n=e).file=La(n),t=(t=n.file&&Fa(n.file))?(n.args.unshift(
-n.file),n.command=t,La(n)):n.file,n=!Ga.test(t),e.options.forceShell||n){const r=Da.test(t);e.command=Ca.normalize(
-e.command),e.command=Ma.command(e.command),e.args=e.args.map(e=>Ma.argument(e,r)),n=[e.command].concat(e.args).join(" ")
+,e.args=["-c",t]),e}:function(e){var t,n;if(!Ga)return e;if((n=e).file=Ma(n),t=(t=n.file&&Ba(n.file))?(n.args.unshift(
+n.file),n.command=t,Ma(n)):n.file,n=!Da.test(t),e.options.forceShell||n){const r=Ua.test(t);e.command=Na.normalize(
+e.command),e.command=Fa.command(e.command),e.args=e.args.map(e=>Fa.argument(e,r)),n=[e.command].concat(e.args).join(" ")
 ,e.args=["/d","/s","/c",`"${n}"`],e.command=process.env.comspec||"cmd.exe",e.options.windowsVerbatimArguments=!0}
 return e})(e)}function De(e,t,n){if(t&&!Array.isArray(t)&&(n=t,t=null),e={command:e,args:t=t?t.slice(0):[],
-options:n=Object.assign({},n),file:void 0,original:{command:e,args:t}},n.shell)return e;if(t=e,!jc)return t;if((n=t
-).file=wc(n),e=(e=n.file&&function(e){var t;const n=Buffer.alloc(150);try{t=vc.openSync(e,"r"),vc.readSync(t,n,0,150,0),
-vc.closeSync(t)}catch(e){}return _c(n.toString())}(n.file))?(n.args.unshift(n.file),n.command=e,wc(n)):n.file,
-n=!Ec.test(e),t.options.forceShell||n){const r=Oc.test(e);t.command=bc.normalize(t.command),t.command=xc.command(
-t.command),t.args=t.args.map(e=>xc.argument(e,r)),n=[t.command].concat(t.args).join(" "),t.args=["/d","/s","/c",`"${n}"`
+options:n=Object.assign({},n),file:void 0,original:{command:e,args:t}},n.shell)return e;if(t=e,!Ec)return t;if((n=t
+).file=xc(n),e=(e=n.file&&function(e){var t;const n=Buffer.alloc(150);try{t=_c.openSync(e,"r"),_c.readSync(t,n,0,150,0),
+_c.closeSync(t)}catch(e){}return bc(n.toString())}(n.file))?(n.args.unshift(n.file),n.command=e,xc(n)):n.file,
+n=!Oc.test(e),t.options.forceShell||n){const r=Sc.test(e);t.command=wc.normalize(t.command),t.command=jc.command(
+t.command),t.args=t.args.map(e=>jc.argument(e,r)),n=[t.command].concat(t.args).join(" "),t.args=["/d","/s","/c",`"${n}"`
 ],t.command=process.env.comspec||"cmd.exe",t.options.windowsVerbatimArguments=!0}return t}function Ue({name:e,number:t,
 description:n,action:r,forced:o=!1,standard:i}){var{signals:{[e]:u}}=ba.constants,a=void 0!==u;return{name:e,
 number:a?u:t,description:n,supported:a,action:r,forced:o,standard:i}}var We,ze,qe,Ve,He,Ke,Ze,Xe,Ye,Je,Qe,et,tt,nt,rt,ot
@@ -179,16 +179,16 @@ Go,Do,Uo,Wo,zo,qo,Vo,Ho,Ko,Zo,Xo,Yo,Jo,Qo,ei,ti,ni,ri,oi,ii,ui,ai,ci,si,u,li,fi,
 zu,qu,Vu,Ka,Za,Hu,w,Ku,Zu,x,Xu,j,Yu,E,Ju,Qu,ea,ta,na,ra,oa,ia,ua,aa,ca,sa,la,fa,pa,ha=require("path"),da=require(
 "child_process"),O=require("fs"),S=require("stream"),ga=require("assert"),ma=require("events"),I=require("util"),
 ya=require("node:buffer"),va=require("node:path"),k=require("node:child_process"),_a=require("node:process"),T=require(
-"node:url"),ba=require("os"),P=require("node:os"),R=require("buffer"),C=e(ha),ha=e(da),N=e(O),da=e(S),O=e(ga),S=e(ma),
-ga=e(I),wa=e(va),xa=e(k),ja=e(_a),Ea=e(T),Oa=e(P),ma=e(R);const Sa="inherit",Ia=["@types/node","@types/lodash",
+"node:url"),ba=require("os"),P=require("node:os"),R=require("buffer"),C=e(ha),ha=e(da),wa=e(O),da=e(S),O=e(ga),S=e(ma),
+ga=e(I),xa=e(va),ja=e(k),Ea=e(_a),Oa=e(T),Sa=e(P),ma=e(R);const Ia="inherit",Aa=["@types/node","@types/lodash",
 "@babel/cli","@babel/core","@babel/preset-env","@babel/preset-typescript","@rollup/plugin-babel",
 "@rollup/plugin-commonjs","@rollup/plugin-inject","@rollup/plugin-json","@rollup/plugin-node-resolve",
 "@rollup/plugin-replace","@rollup/plugin-typescript","typescript","tslib","ts-node","rollup-plugin-uglify","rollup",
-"lodash"],Aa=(_a=null!=(k=null==(I=process)||null==(va=I.env)?void 0:va.CREATE_BACKEND_LOG_LEVEL)?k:"INFO",
+"lodash"],ka=(_a=null!=(k=null==(I=process)||null==(va=I.env)?void 0:va.CREATE_BACKEND_LOG_LEVEL)?k:"INFO",
 A="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{}
 ,Uu={},T={},P={exports:{}},R={exports:{}},I=function(e){try{return e()}catch(e){}},(va=function(n,r,o){We.stat(n,
-function(e,t){o(e,!e&&$(t,n,r))})}).sync=function(e,t){return $(We.statSync(e),e,t)},We=N.default,(k=function(e,n,r){
-ze.stat(e,function(e,t){r(e,!e&&G(t,n))})}).sync=function(e,t){return G(ze.statSync(e),t)},ze=N.default,
+function(e,t){o(e,!e&&$(t,n,r))})}).sync=function(e,t){return $(We.statSync(e),e,t)},We=wa.default,(k=function(e,n,r){
+ze.stat(e,function(e,t){r(e,!e&&G(t,n))})}).sync=function(e,t){return G(ze.statSync(e),t)},ze=wa.default,
 qe="win32"===process.platform||A.TESTING_WINDOWS?va:k,(va=function e(t,o,n){if("function"==typeof o&&(n=o,o={}),!n){if(
 "function"!=typeof Promise)throw new TypeError("callback not provided");return new Promise(function(n,r){e(t,o||{},
 function(e,t){e?r(e):n(t)})})}qe(t,o||{},function(e,t){e&&("EACCES"===e.code||o&&o.ignoreErrors)&&(e=null,t=!1),n(e,t)})
@@ -202,12 +202,12 @@ o.length)}).sync=function(e,t){for(var n,r,o,i,u,a,c=(n=U(e,t=t||{})).env,s=n.ex
 ,2)+o),i=0,u=s.length;i<u;i++){a=o+s[i];try{if(Ze.sync(a,{pathExt:l})){if(!t.all)return a;f.push(a)}}catch(e){}}if(
 t.all&&f.length)return f;if(t.nothrow)return null;throw D(e)},
 Ve="win32"===process.platform||"cygwin"===process.env.OSTYPE||"msys"===process.env.OSTYPE,He=C.default,Ke=Ve?";":":",
-Ze=va,C.default),ka=k,Ta=(k=e=>{var t=(e=e||{}).env||process.env;return"win32"!==(e.platform||process.platform
-)?"PATH":Object.keys(t).find(e=>"PATH"===e.toUpperCase())||"Path"})(),Pa=(E=function(e){return W(e)||W(e,!0)},
-/([()\][%!^"`<>&|;, *?])/g),Ra=((y={}).command=function(e){return e.replace(Pa,"^$1")},y.argument=function(e,t){
-return e=(e=`"${e=(e=(e=""+e).replace(/(\\*)"/g,'$1$1\\"')).replace(/(\\*)$/,"$1$1")}"`).replace(Pa,"^$1"),t?e.replace(
-Pa,"^$1"):e},Xe=/^#!.*/,N.default);for(j=function(e){var t;let n;Buffer.alloc?n=Buffer.alloc(150):(n=new Buffer(150)
-).fill(0);try{t=Ra.openSync(e,"r"),Ra.readSync(t,n,0,150,0),Ra.closeSync(t)}catch(e){}return(e=n.toString().match(Xe))?(
+Ze=va,C.default),Ta=k,Pa=(k=e=>{var t=(e=e||{}).env||process.env;return"win32"!==(e.platform||process.platform
+)?"PATH":Object.keys(t).find(e=>"PATH"===e.toUpperCase())||"Path"})(),Ra=(E=function(e){return W(e)||W(e,!0)},
+/([()\][%!^"`<>&|;, *?])/g),Ca=((y={}).command=function(e){return e.replace(Ra,"^$1")},y.argument=function(e,t){
+return e=(e=`"${e=(e=(e=""+e).replace(/(\\*)"/g,'$1$1\\"')).replace(/(\\*)$/,"$1$1")}"`).replace(Ra,"^$1"),t?e.replace(
+Ra,"^$1"):e},Xe=/^#!.*/,wa.default);for(j=function(e){var t;let n;Buffer.alloc?n=Buffer.alloc(150):(n=new Buffer(150)
+).fill(0);try{t=Ca.openSync(e,"r"),Ca.readSync(t,n,0,150,0),Ca.closeSync(t)}catch(e){}return(e=n.toString().match(Xe))?(
 e=(t=e[0].replace(/#! ?/,"").split(" "))[0].split("/").pop(),t=t[1],"env"===e?t:e+(t?" "+t:"")):null},b=(_={exports:{}}
 ).exports,b=_.exports=h,s="object"==typeof process&&process.env&&process.env.NODE_DEBUG&&/\bsemver\b/i.test(
 process.env.NODE_DEBUG)?function(){var e=Array.prototype.slice.call(arguments,0);e.unshift("SEMVER"),console.log.apply(
@@ -308,14 +308,14 @@ b.validRange=function(e,t){try{return new d(e,t).range||"*"}catch(e){return null
 "<",n)},b.gtr=function(e,t,n){return Ce(e,t,">",n)},b.outside=Ce,b.prerelease=function(e,t){e=be(e,t);
 return e&&e.prerelease.length?e.prerelease:null},b.intersects=function(e,t,n){return e=new d(e,n),t=new d(t,n),
 e.intersects(t)},b.coerce=function(e){if(e instanceof h)return e;if("string"!=typeof e)return null;e=e.match(l[20]);
-return null==e?null:be(e[1]+"."+(e[2]||"0")+"."+(e[3]||"0"))};const Ca=C.default,Na=I,La=E,Ma=y,Fa=j,Ba=_.exports,
-$a="win32"===process.platform,Ga=/\.(?:com|exe)$/i,Da=/node_modules[\\/].bin[\\/][^\\/]+\.cmd$/i,Ua=Na(()=>Ba.satisfies(
-process.version,"^4.8.0 || ^5.7.0 || >= 6.0.0",!0))||!1,Wa="win32"===process.platform,za=ha.default,qa={
-hookChildProcess:function(n,r){if(Wa){const o=n.emit;n.emit=function(e,t){if("exit"===e){e=q(t,r);if(e)return o.call(n,
-"error",e)}return o.apply(n,arguments)}}},verifyENOENT:q,verifyENOENTSync:function(e,t){return Wa&&1===e&&!t.file?z(
+return null==e?null:be(e[1]+"."+(e[2]||"0")+"."+(e[3]||"0"))};const Na=C.default,La=I,Ma=E,Fa=y,Ba=j,$a=_.exports,
+Ga="win32"===process.platform,Da=/\.(?:com|exe)$/i,Ua=/node_modules[\\/].bin[\\/][^\\/]+\.cmd$/i,Wa=La(()=>$a.satisfies(
+process.version,"^4.8.0 || ^5.7.0 || >= 6.0.0",!0))||!1,za="win32"===process.platform,qa=ha.default,Va={
+hookChildProcess:function(n,r){if(za){const o=n.emit;n.emit=function(e,t){if("exit"===e){e=q(t,r);if(e)return o.call(n,
+"error",e)}return o.apply(n,arguments)}}},verifyENOENT:q,verifyENOENTSync:function(e,t){return za&&1===e&&!t.file?z(
 t.original,"spawnSync"):null},notFoundError:z};R.exports=V,R.exports.spawn=V,R.exports.sync=function(e,t,n){e=Ge(e,t,n);
-const r=za.spawnSync(e.command,e.args,e.options);return r.error=r.error||qa.verifyENOENTSync(r.status,e),r},
-R.exports._parse=Ge,R.exports._enoent=qa,p=function(e){var t="string"==typeof e?"\n":"\n".charCodeAt(),
+const r=qa.spawnSync(e.command,e.args,e.options);return r.error=r.error||Va.verifyENOENTSync(r.status,e),r},
+R.exports._parse=Ge,R.exports._enoent=Va,p=function(e){var t="string"==typeof e?"\n":"\n".charCodeAt(),
 n="string"==typeof e?"\r":"\r".charCodeAt();return(e=e[e.length-1]===t?e.slice(0,e.length-1):e)[e.length-1]===n?e.slice(
 0,e.length-1):e};{Wu=m={exports:{}};const us=C.default,as=k;Wu.exports=e=>{e=Object.assign({cwd:process.cwd(),
 path:process.env[as()]},e);let t,n=us.resolve(e.cwd);const r=[];for(;t!==n;)r.push(us.join(n,"node_modules/.bin")),t=n,
@@ -344,15 +344,15 @@ h=function(){process.nextTick(d)},d=function(){if(!a)return(!i||o&&o.ended&&!o.d
 "finish",s),!1!==e.error&&t.on("error",p),t.on("close",h),function(){a=!0,t.removeListener("complete",s),
 t.removeListener("abort",h),t.removeListener("request",g),t.req&&t.req.removeListener("finish",s),t.removeListener("end"
 ,c),t.removeListener("close",c),t.removeListener("finish",s),t.removeListener("exit",f),t.removeListener("end",l),
-t.removeListener("error",p),t.removeListener("close",h)})},it=N.default,ut=function(){},at=/^v?\.0/.test(process.version
-),ct=function(e){return"function"==typeof e},st=function(e){return!!at&&!!it&&(e instanceof(it.ReadStream||ut
-)||e instanceof(it.WriteStream||ut))&&ct(e.close)},lt=function(e){return e.setHeader&&ct(e.abort)},ft=function(t,e,n,r){
-var o,i;return r=rt(r),o=!1,t.on("close",function(){o=!0}),ot(t,{readable:e,writable:n},function(e){if(e)return r(e);
-o=!0,r()}),i=!1,function(e){if(!o&&!i)return i=!0,st(t)?t.close(ut):lt(t)?t.abort():ct(t.destroy)?t.destroy():void r(
-e||new Error("stream was destroyed"))}},pt=function(e){e()},ht=function(e,t){return e.pipe(t)};
-const Va=da.default.PassThrough;class Ha extends Error{constructor(){super("maxBuffer exceeded"),
+t.removeListener("error",p),t.removeListener("close",h)})},it=wa.default,ut=function(){},at=/^v?\.0/.test(
+process.version),ct=function(e){return"function"==typeof e},st=function(e){return!!at&&!!it&&(e instanceof(
+it.ReadStream||ut)||e instanceof(it.WriteStream||ut))&&ct(e.close)},lt=function(e){return e.setHeader&&ct(e.abort)},
+ft=function(t,e,n,r){var o,i;return r=rt(r),o=!1,t.on("close",function(){o=!0}),ot(t,{readable:e,writable:n},function(e
+){if(e)return r(e);o=!0,r()}),i=!1,function(e){if(!o&&!i)return i=!0,st(t)?t.close(ut):lt(t)?t.abort():ct(t.destroy
+)?t.destroy():void r(e||new Error("stream was destroyed"))}},pt=function(e){e()},ht=function(e,t){return e.pipe(t)};
+const Ha=da.default.PassThrough;class Xa extends Error{constructor(){super("maxBuffer exceeded"),
 this.name="MaxBufferError"}}E.exports=Z,E.exports.buffer=(e,t)=>Z(e,Object.assign({},t,{encoding:"buffer"})),
-E.exports.array=(e,t)=>Z(e,Object.assign({},t,{array:!0})),E.exports.MaxBufferError=Ha,_=(e,t)=>(t=t||(()=>{}),e.then(
+E.exports.array=(e,t)=>Z(e,Object.assign({},t,{array:!0})),E.exports.MaxBufferError=Xa,_=(e,t)=>(t=t||(()=>{}),e.then(
 e=>new Promise(e=>{e(t())}).then(()=>e),e=>new Promise(e=>{e(t())}).then(()=>{throw e}))),k={exports:{}},(y=j={
 exports:{}}).exports=["SIGABRT","SIGALRM","SIGHUP","SIGINT","SIGTERM"],"win32"!==process.platform&&y.exports.push(
 "SIGVTALRM","SIGXCPU","SIGXFSZ","SIGUSR2","SIGTRAP","SIGSYS","SIGQUIT","SIGIOT"),
@@ -371,50 +371,50 @@ null,e),vt("afterexit",null,e),mt&&"SIGHUP"===e&&(e="SIGINT"),n.kill(n.pid,e))}}
 n.exitCode=e||0,vt("exit",n.exitCode,null),vt("afterexit",n.exitCode,null),xt.call(n,n.exitCode))},Et=n.emit,
 Ot=function(e,t){return"exit"===e&&Ne(A.process)?(void 0!==t&&(n.exitCode=t),e=Et.apply(this,arguments),vt("exit",
 n.exitCode,null),vt("afterexit",n.exitCode,null),e):Et.apply(this,arguments)}):k.exports=function(){return function(){}}
-,Xu=k.exports,O={exports:{}},j=ga.default;let Xa;if("function"==typeof j.getSystemErrorName
-)O.exports=j.getSystemErrorName;else{try{if("function"!=typeof(Xa=process.binding("uv")).errname)throw new TypeError(
+,Xu=k.exports,O={exports:{}},j=ga.default;let Ya;if("function"==typeof j.getSystemErrorName
+)O.exports=j.getSystemErrorName;else{try{if("function"!=typeof(Ya=process.binding("uv")).errname)throw new TypeError(
 "uv.errname is not a function")}catch(e){console.error("execa/lib/errname: unable to establish process.binding('uv')",e)
-,Xa=null}O.exports=e=>X(Xa,e)}O.exports.__test__=X;const Ya=["stdin","stdout","stderr"];{function Ja(e,t,n){let r;
+,Ya=null}O.exports=e=>X(Ya,e)}O.exports.__test__=X;const Ja=["stdin","stdout","stderr"];{function Qa(e,t,n){let r;
 return(n=Object.assign({extendEnv:!0,env:{}},n)).extendEnv&&(n.env=Object.assign({},process.env,n.env)),
 r=!0===n.__winShell?(delete n.__winShell,{command:e,args:t,options:n,file:e,original:{cmd:e,args:t}}):ls._parse(e,t,n),(
 n=Object.assign({maxBuffer:1e7,buffer:!0,stripEof:!0,preferLocal:!0,localDir:r.options.cwd||process.cwd(),
-encoding:"utf8",reject:!0,cleanup:!0},r.options)).stdio=(n=>{var t,r,e;if(!n)return null;if(n.stdio&&(t=n,Ya.some(
-e=>Boolean(t[e]))))throw new Error("It's not possible to provide `stdio` in combination with one of "+Ya.map(
+encoding:"utf8",reject:!0,cleanup:!0},r.options)).stdio=(n=>{var t,r,e;if(!n)return null;if(n.stdio&&(t=n,Ja.some(
+e=>Boolean(t[e]))))throw new Error("It's not possible to provide `stdio` in combination with one of "+Ja.map(
 e=>`\`${e}\``).join(", "));if("string"==typeof n.stdio)return n.stdio;if(r=n.stdio||[],!Array.isArray(r)
 )throw new TypeError(`Expected \`stdio\` to be of type \`string\` or \`Array\`, got \`${typeof r}\``);const o=[];
-e=Math.max(r.length,Ya.length);for(let t=0;t<e;t++){let e=null;void 0!==r[t]?e=r[t]:void 0!==n[Ya[t]]&&(e=n[Ya[t]]),
+e=Math.max(r.length,Ja.length);for(let t=0;t<e;t++){let e=null;void 0!==r[t]?e=r[t]:void 0!==n[Ja[t]]&&(e=n[Ja[t]]),
 o[t]=e}return o})(n),n.preferLocal&&(n.env=ps.env(Object.assign({},n,{cwd:n.localDir}))),n.detached&&(n.cleanup=!1),
 "win32"===process.platform&&"cmd.exe"===cs.basename(r.command)&&r.args.unshift("/q"),{cmd:r.command,args:r.args,opts:n,
-parsed:r}}function Qa(e,t){return t&&e.stripEof?fs(t):t}function ec(e,t,n){let r="/bin/sh",o=["-c",t];
+parsed:r}}function ec(e,t){return t&&e.stripEof?fs(t):t}function tc(e,t,n){let r="/bin/sh",o=["-c",t];
 return n=Object.assign({},n),"win32"===process.platform&&(n.__winShell=!0,r=process.env.comspec||"cmd.exe",o=["/s","/c",
-`"${t}"`],n.windowsVerbatimArguments=!0),n.shell&&(r=n.shell,delete n.shell),e(r,o,n)}function tc(n,r,{encoding:e,
+`"${t}"`],n.windowsVerbatimArguments=!0),n.shell&&(r=n.shell,delete n.shell),e(r,o,n)}function nc(n,r,{encoding:e,
 buffer:t,maxBuffer:o}){if(!n[r])return null;let i;return(i=t?e?ds(n[r],{encoding:e,maxBuffer:o}):ds.buffer(n[r],{
 maxBuffer:o}):new Promise((e,t)=>{n[r].once("end",e).once("error",t)})).catch(e=>{throw e.stream=r,
-e.message=r+" "+e.message,e})}function nc(t,e){var{stdout:n,stderr:r}=t;let o=t.error;var{code:t,signal:i}=t,{parsed:u,
+e.message=r+" "+e.message,e})}function rc(t,e){var{stdout:n,stderr:r}=t;let o=t.error;var{code:t,signal:i}=t,{parsed:u,
 joinedCmd:a}=e,e=e.timedOut||!1;if(!o){let e="";Array.isArray(u.opts.stdio)?("inherit"!==u.opts.stdio[2]&&(
 e+=0<e.length?r:`
 `+r),"inherit"!==u.opts.stdio[1]&&(e+=`
 `+n)):"inherit"!==u.opts.stdio&&(e=`
 `+r+n),(o=new Error("Command failed: "+a+e)).code=t<0?ys(t):t}return o.stdout=n,o.stderr=r,o.failed=!0,o.signal=i||null,
-o.cmd=a,o.timedOut=e,o}function rc(e,t){let n=e;return Array.isArray(t)&&0<t.length&&(n+=" "+t.join(" ")),n}Yu=P;
+o.cmd=a,o.timedOut=e,o}function oc(e,t){let n=e;return Array.isArray(t)&&0<t.length&&(n+=" "+t.join(" ")),n}Yu=P;
 const cs=C.default,ss=ha.default,ls=R.exports,fs=p,ps=m.exports,hs=I.exports,ds=E.exports,gs=_,ms=k.exports,ys=O.exports
-Yu.exports=(e,t,n)=>{function r(){s.stdout&&s.stdout.destroy(),s.stderr&&s.stderr.destroy()}const o=Ja(e,t,n),{
-encoding:i,buffer:u,maxBuffer:a}=o.opts,c=rc(e,t);let s;try{s=ss.spawn(o.cmd,o.args,o.opts)}catch(e){
+Yu.exports=(e,t,n)=>{function r(){s.stdout&&s.stdout.destroy(),s.stderr&&s.stderr.destroy()}const o=Qa(e,t,n),{
+encoding:i,buffer:u,maxBuffer:a}=o.opts,c=oc(e,t);let s;try{s=ss.spawn(o.cmd,o.args,o.opts)}catch(e){
 return Promise.reject(e)}let l,f=(o.opts.cleanup&&(l=ms(()=>{s.kill()})),null),p=!1;const h=()=>{f&&(clearTimeout(f),
 f=null),l&&l()},d=(0<o.opts.timeout&&(f=setTimeout(()=>{f=null,p=!0,s.kill(o.opts.killSignal)},o.opts.timeout)),
 new Promise(n=>{s.on("exit",(e,t)=>{h(),n({code:e,signal:t})}),s.on("error",e=>{h(),n({error:e})}),s.stdin&&s.stdin.on(
-"error",e=>{h(),n({error:e})})})),g=()=>gs(Promise.all([d,tc(s,"stdout",{encoding:i,buffer:u,maxBuffer:a}),tc(s,"stderr"
+"error",e=>{h(),n({error:e})})})),g=()=>gs(Promise.all([d,nc(s,"stdout",{encoding:i,buffer:u,maxBuffer:a}),nc(s,"stderr"
 ,{encoding:i,buffer:u,maxBuffer:a})]).then(e=>{const t=e[0];if(t.stdout=e[1],t.stderr=e[2],
-t.error||0!==t.code||null!==t.signal){const n=nc(t,{joinedCmd:c,parsed:o,timedOut:p});if(n.killed=n.killed||s.killed,
-o.opts.reject)throw n;return n}return{stdout:Qa(o.opts,t.stdout),stderr:Qa(o.opts,t.stderr),code:0,failed:!1,killed:!1,
+t.error||0!==t.code||null!==t.signal){const n=rc(t,{joinedCmd:c,parsed:o,timedOut:p});if(n.killed=n.killed||s.killed,
+o.opts.reject)throw n;return n}return{stdout:ec(o.opts,t.stdout),stderr:ec(o.opts,t.stderr),code:0,failed:!1,killed:!1,
 signal:null,cmd:c,timedOut:!1}}),r);return ls._enoent.hookChildProcess(s,o.parsed),n=s,null!=(e=o.opts.input)&&(hs(e
 )?e.pipe(n.stdin):n.stdin.end(e)),s.then=(e,t)=>g().then(e,t),s.catch=e=>g().catch(e),s},Yu.exports.stdout=(...e
 )=>Yu.exports(...e).then(e=>e.stdout),Yu.exports.stderr=(...e)=>Yu.exports(...e).then(e=>e.stderr),Yu.exports.shell=(e,t
-)=>ec(Yu.exports,e,t),Yu.exports.sync=(e,t,n)=>{n=Ja(e,t,n),e=rc(e,t);if(hs(n.opts.input))throw new TypeError(
+)=>tc(Yu.exports,e,t),Yu.exports.sync=(e,t,n)=>{n=Qa(e,t,n),e=oc(e,t);if(hs(n.opts.input))throw new TypeError(
 "The `input` option cannot be a stream in sync mode");const r=ss.spawnSync(n.cmd,n.args,n.opts);if(r.code=r.status,
-r.error||0!==r.status||null!==r.signal){if(t=nc(r,{joinedCmd:e,parsed:n}),n.opts.reject)throw t;return t}return{
-stdout:Qa(n.opts,r.stdout),stderr:Qa(n.opts,r.stderr),code:0,failed:!1,signal:null,cmd:e,timedOut:!1}},
-Yu.exports.shellSync=(e,t)=>ec(Yu.exports.sync,e,t)}S={},Object.defineProperty(S,"__esModule",{value:!0}),
+r.error||0!==r.status||null!==r.signal){if(t=rc(r,{joinedCmd:e,parsed:n}),n.opts.reject)throw t;return t}return{
+stdout:ec(n.opts,r.stdout),stderr:ec(n.opts,r.stderr),code:0,failed:!1,signal:null,cmd:e,timedOut:!1}},
+Yu.exports.shellSync=(e,t)=>tc(Yu.exports.sync,e,t)}S={},Object.defineProperty(S,"__esModule",{value:!0}),
 S.ValidPackageFlags=new Set(["dev","exact","noSave","bundle","verbose"]),S.ValidProjectInstallFlags=new Set(["dryRun",
 "verbose"]),S.defaultInstallConfig={dev:!1,prefer:null,exact:!1,noSave:!1,bundle:!1,verbose:!1,global:!1,stdio:"pipe",
 cwd:process.cwd()},y={},j=A&&A.__extends||(zu=function(e,t){return(zu=Object.setPrototypeOf||{__proto__:[]
@@ -443,7 +443,7 @@ c.label=a[2],c.ops.push(t);break}a[2]&&c.ops.pop(),c.trys.pop();continue}t=o.cal
 i=a=0}if(5&t[0])throw t[1];return{value:t[0]?t[1]:void 0,done:!0}}}var i,u,a,c={label:0,sent:function(){if(1&a[0]
 )throw a[1];return a[1]},trys:[],ops:[]},t={next:e(0),throw:e(1),return:e(2)};return"function"==typeof Symbol&&(
 t[Symbol.iterator]=function(){return this}),t},E=A&&A.__importDefault||function(e){return e&&e.__esModule?e:{default:e}}
-,Object.defineProperty(I,"__esModule",{value:!0}),Pt=E(P.exports),Rt=N.default,Ct=E(C.default),_=ga.default,
+,Object.defineProperty(I,"__esModule",{value:!0}),Pt=E(P.exports),Rt=wa.default,Ct=E(C.default),_=ga.default,
 Nt=_.promisify(Rt.access),I.isManagerInstalled=function(t){return kt(this,void 0,void 0,function(){return Tt(this,
 function(e){switch(e.label){case 0:return[4,Pt.default(t,["--version"])];case 1:return[2,!e.sent().failed]}})})},
 I.isManagerInstalledSync=function(e){return!Pt.default.sync(e,["--version"]).failed},
@@ -507,21 +507,21 @@ case 1:return n=e.sent(),r="npm"===n?Vt.npmProjectInstallArgs:Kt.yarnProjectInst
 qt.getExecaConfig(t))]}})})},T.projectInstallSync=function(e){var t,n;return void 0===e&&(e=zt.defaultInstallConfig),
 e=Gt({},zt.defaultInstallConfig,e),n="npm"===(t=Ht.getPackageManagerSync(e)
 )?Vt.npmProjectInstallArgs:Kt.yarnProjectInstallArgs,Wt.default.sync(t,n,qt.getExecaConfig(e))},Vu=Uu,
-Object.defineProperty(Vu,"__esModule",{value:!0}),Me(T),Me(m);class oc{constructor(e,t){B(this,"_logger",void 0),B(this,
+Object.defineProperty(Vu,"__esModule",{value:!0}),Me(T),Me(m);class ic{constructor(e,t){B(this,"_logger",void 0),B(this,
 "name",void 0),B(this,"_level",void 0),this.name=e,this._logger=t,this._level=void 0}getLogLevel(){var e;return null!=(
 e=this._level)?e:this._logger.getLogLevel()}setLogLevel(e){return this._level=e,this}debug(...e){(
 void 0===this._level||this._level<=Zt.DEBUG)&&this._logger.debug(`[${this.name}]`,...e)}info(...e){(
 void 0===this._level||this._level<=Zt.INFO)&&this._logger.info(`[${this.name}]`,...e)}warn(...e){(
 void 0===this._level||this._level<=Zt.WARN)&&this._logger.warn(`[${this.name}]`,...e)}error(...e){(
-void 0===this._level||this._level<=Zt.ERROR)&&this._logger.error(`[${this.name}]`,...e)}}class ic{static setLogLevel(e){
+void 0===this._level||this._level<=Zt.ERROR)&&this._logger.error(`[${this.name}]`,...e)}}class uc{static setLogLevel(e){
 return e&&(this._level=e),this}static getLogLevel(){return this._level}static getLogLevelString(){var e=this._level;
 switch(e){case t.DEBUG:return"DEBUG";case t.INFO:return"INFO";case t.WARN:return"WARN";case t.ERROR:return"ERROR";
 case t.NONE:return"NONE";default:return"Unknown:"+e}}static setLogger(e){if(!e)throw new TypeError(
 "The logger was not defined");this._logger=e}static debug(...e){this._level<=Zt.DEBUG&&this._logger.debug(...e)}
 static info(...e){this._level<=Zt.INFO&&this._logger.info(...e)}static warn(...e){
 this._level<=Zt.WARN&&this._logger.warn(...e)}static error(...e){this._level<=Zt.ERROR&&this._logger.error(...e)}
-static createLogger(e){return new oc(e,ic)}}B(ic,"Level",Zt=t={DEBUG:0,0:"DEBUG",INFO:1,1:"INFO",WARN:2,2:"WARN",
-ERROR:3,3:"ERROR",NONE:4,4:"NONE"}),B(ic,"_level",Zt.DEBUG),B(ic,"_logger",console),Za=(Ka=Xt={exports:{}}).exports,
+static createLogger(e){return new ic(e,uc)}}B(uc,"Level",Zt=t={DEBUG:0,0:"DEBUG",INFO:1,1:"INFO",WARN:2,2:"WARN",
+ERROR:3,3:"ERROR",NONE:4,4:"NONE"}),B(uc,"_level",Zt.DEBUG),B(uc,"_logger",console),Za=(Ka=Xt={exports:{}}).exports,
 function(){function Pi(e,t,n){switch(n.length){case 0:return e.call(t);case 1:return e.call(t,n[0]);case 2:
 return e.call(t,n[0],n[1]);case 3:return e.call(t,n[0],n[1],n[2])}return e.apply(t,n)}function au(e,t,n,r){for(var o,
 i=-1,u=null==e?0:e.length;++i<u;)t(r,o=e[i],n(o),e);return r}function Ri(e,t){for(var n=-1,
@@ -1268,45 +1268,45 @@ return e[fa]=pa(o),tu(la,this,e)}),na+""),su=k,lu=R,fu=function(e,r){var o=[];re
 return!0===e||!1===e||mu(e)&&"[object Boolean]"==gu(e)},vu=function(e){return null===e},bu=o,xu=function(e){
 return"string"==typeof e||!bu(e)&&wu(e)&&"[object String]"==_u(e)},ju=_u=gu=_,Eu=wu=mu=ir,Ou=function(e){
 return"number"==typeof e||Eu(e)&&"[object Number]"==ju(e)},Su=j,Iu=function(t,e){return Su(e,function(e){return t[e]})},
-Au=x,ku=function(e){return null==e?[]:Iu(e,Au(e))},Tu=uo,Pu=function(e,t){return Tu(e,t)};const uc=ic.createLogger(
-"SyncFileUtils");class L{static isDirectory(e){return N.default.statSync(e).isDirectory()}static directoryExits(e){
-return N.default.existsSync(e)&&N.default.statSync(e).isDirectory()}static mkdirp(e){var t,n;uc.debug(
-"mkdirp: Creating directory: ",e);const r=[];for(;!L.directoryExits(e)&&(r.push(e),e!==(t=C.default.dirname(e)));)e=t;
-for(;1<=r.length;)n=r.pop(),uc.debug("mkdirp: Creating missing directory: ",n),N.default.mkdirSync(n)}
-static readTextFile(e){return N.default.readFileSync(e,"utf8")}static fileExists(e){return N.default.existsSync(e)}
-static readJsonFile(e){return JSON.parse(L.readTextFile(e))}static writeTextFile(e,t){N.default.writeFileSync(e,t,{
-encoding:"utf8"})}static writeJsonFile(e,t){t=JSON.stringify(t,null,2);L.writeTextFile(e,t)}
-static copyTextFileWithReplacements(e,t,n){let r=L.readTextFile(e);se(n).forEach(e=>{var t=n[e];r=r.replace(e,t)}),
-L.writeTextFile(t,r)}static copyTextFileWithReplacementsIfMissing(e,t,n){L.fileExists(t)?uc.warn(
-"Warning! File already exists: ",t):L.copyTextFileWithReplacements(e,t,n)}}p={exports:{}};
-const ac="win32"===process.platform||"cygwin"===process.env.OSTYPE||"msys"===process.env.OSTYPE,cc=C.default,
-sc=ac?";":":",lc=va,fc=e=>Object.assign(new Error("not found: "+e),{code:"ENOENT"}),pc=(e,t)=>{var n=t.colon||sc,
-r=e.match(/\//)||ac&&e.match(/\\/)?[""]:[...ac?[process.cwd()]:[],...(t.path||process.env.PATH||"").split(n)];
-const o=ac?t.pathExt||process.env.PATHEXT||".EXE;.CMD;.BAT;.COM":"",i=ac?o.split(n):[""];return ac&&-1!==e.indexOf("."
-)&&""!==i[0]&&i.unshift(""),{pathEnv:r,pathExt:i,pathExtExe:o}},hc=((E=(i,a,t)=>{"function"==typeof a&&(t=a,a={}),
-a=a||{};const{pathEnv:u,pathExt:c,pathExtExe:s}=pc(i,a),l=[],f=o=>new Promise((e,t)=>{if(o===u.length
-)return a.all&&l.length?e(l):t(fc(i));const n=u[o];var t=/^".*"$/.test(n)?n.slice(1,-1):n,r=cc.join(t,i),
+Au=x,ku=function(e){return null==e?[]:Iu(e,Au(e))},Tu=uo,Pu=function(e,t){return Tu(e,t)};const ac=uc.createLogger(
+"SyncFileUtils");class N{static isDirectory(e){return wa.default.statSync(e).isDirectory()}static directoryExits(e){
+return wa.default.existsSync(e)&&wa.default.statSync(e).isDirectory()}static mkdirp(e){var t,n;ac.debug(
+"mkdirp: Creating directory: ",e);const r=[];for(;!N.directoryExits(e)&&(r.push(e),e!==(t=C.default.dirname(e)));)e=t;
+for(;1<=r.length;)n=r.pop(),ac.debug("mkdirp: Creating missing directory: ",n),wa.default.mkdirSync(n)}
+static readTextFile(e){return wa.default.readFileSync(e,"utf8")}static fileExists(e){return wa.default.existsSync(e)}
+static readJsonFile(e){return JSON.parse(N.readTextFile(e))}static writeTextFile(e,t){wa.default.writeFileSync(e,t,{
+encoding:"utf8"})}static writeJsonFile(e,t){t=JSON.stringify(t,null,2);N.writeTextFile(e,t)}
+static copyTextFileWithReplacements(e,t,n){let r=N.readTextFile(e);se(n).forEach(e=>{var t=n[e];r=r.replace(e,t)}),
+N.writeTextFile(t,r)}static copyTextFileWithReplacementsIfMissing(e,t,n){N.fileExists(t)?ac.warn(
+"Warning! File already exists: ",t):N.copyTextFileWithReplacements(e,t,n)}}p={exports:{}};
+const cc="win32"===process.platform||"cygwin"===process.env.OSTYPE||"msys"===process.env.OSTYPE,sc=C.default,
+lc=cc?";":":",fc=va,pc=e=>Object.assign(new Error("not found: "+e),{code:"ENOENT"}),hc=(e,t)=>{var n=t.colon||lc,
+r=e.match(/\//)||cc&&e.match(/\\/)?[""]:[...cc?[process.cwd()]:[],...(t.path||process.env.PATH||"").split(n)];
+const o=cc?t.pathExt||process.env.PATHEXT||".EXE;.CMD;.BAT;.COM":"",i=cc?o.split(n):[""];return cc&&-1!==e.indexOf("."
+)&&""!==i[0]&&i.unshift(""),{pathEnv:r,pathExt:i,pathExtExe:o}},dc=((E=(i,a,t)=>{"function"==typeof a&&(t=a,a={}),
+a=a||{};const{pathEnv:u,pathExt:c,pathExtExe:s}=hc(i,a),l=[],f=o=>new Promise((e,t)=>{if(o===u.length
+)return a.all&&l.length?e(l):t(pc(i));const n=u[o];var t=/^".*"$/.test(n)?n.slice(1,-1):n,r=sc.join(t,i),
 t=!t&&/^\.[\\\/]/.test(i)?i.slice(0,2)+r:r;e(p(t,o,0))}),p=(o,i,u)=>new Promise((n,e)=>{if(u===c.length)return n(f(i+1))
-const r=c[u];lc(o+r,{pathExt:s},(e,t)=>{if(!e&&t){if(!a.all)return n(o+r);l.push(o+r)}return n(p(o,i,u+1))})});
-return t?f(0).then(e=>t(null,e),t):f(0)}).sync=(t,n)=>{n=n||{};var r,o,i,u,{pathEnv:a,pathExt:c,pathExtExe:s}=pc(t,n);
-const l=[];for(let e=0;e<a.length;e++){const f=a[e];r=/^".*"$/.test(f)?f.slice(1,-1):f,o=cc.join(r,t),
-i=!r&&/^\.[\\\/]/.test(t)?t.slice(0,2)+o:o;for(let e=0;e<c.length;e++){u=i+c[e];try{if(lc.sync(u,{pathExt:s})){if(!n.all
-)return u;l.push(u)}}catch(e){}}}if(n.all&&l.length)return l;if(n.nothrow)return null;throw fc(t)},(Ju={exports:{}}
+const r=c[u];fc(o+r,{pathExt:s},(e,t)=>{if(!e&&t){if(!a.all)return n(o+r);l.push(o+r)}return n(p(o,i,u+1))})});
+return t?f(0).then(e=>t(null,e),t):f(0)}).sync=(t,n)=>{n=n||{};var r,o,i,u,{pathEnv:a,pathExt:c,pathExtExe:s}=hc(t,n);
+const l=[];for(let e=0;e<a.length;e++){const f=a[e];r=/^".*"$/.test(f)?f.slice(1,-1):f,o=sc.join(r,t),
+i=!r&&/^\.[\\\/]/.test(t)?t.slice(0,2)+o:o;for(let e=0;e<c.length;e++){u=i+c[e];try{if(fc.sync(u,{pathExt:s})){if(!n.all
+)return u;l.push(u)}}catch(e){}}}if(n.all&&l.length)return l;if(n.nothrow)return null;throw pc(t)},(Ju={exports:{}}
 ).exports=Qu=(e={})=>{var t=e.env||process.env;return"win32"!==(e.platform||process.platform)?"PATH":Object.keys(t
-).reverse().find(e=>"PATH"===e.toUpperCase())||"Path"},Ju.exports.default=Qu,C.default),dc=E,gc=Ju.exports,mc=(
-m=function(e){return he(e)||he(e,!0)},/([()\][%!^"`<>&|;, *?])/g),yc=((c={}).command=function(e){return e.replace(mc,
+).reverse().find(e=>"PATH"===e.toUpperCase())||"Path"},Ju.exports.default=Qu,C.default),gc=E,mc=Ju.exports,yc=(
+m=function(e){return he(e)||he(e,!0)},/([()\][%!^"`<>&|;, *?])/g),vc=((c={}).command=function(e){return e.replace(yc,
 "^$1")},c.argument=function(e,t){return e=(e=`"${e=(e=(e=""+e).replace(/(\\*)"/g,'$1$1\\"')).replace(/(\\*)$/,"$1$1")}"`
-).replace(mc,"^$1"),t?e.replace(mc,"^$1"):e},/^#!(.*)/),vc=N.default,_c=(e="")=>{const t=e.match(yc);if(!t)return null;
-const[n,r]=t[0].replace(/#! ?/,"").split(" ");e=n.split("/").pop();return"env"===e?r:r?e+" "+r:e},bc=C.default,wc=m,xc=c
-,jc="win32"===process.platform,Ec=/\.(?:com|exe)$/i,Oc=/node_modules[\\/].bin[\\/][^\\/]+\.cmd$/i,
-Sc="win32"===process.platform,Ic=ha.default,Ac={hookChildProcess:function(n,r){if(Sc){const o=n.emit;n.emit=function(e,t
+).replace(yc,"^$1"),t?e.replace(yc,"^$1"):e},/^#!(.*)/),_c=wa.default,bc=(e="")=>{const t=e.match(vc);if(!t)return null;
+const[n,r]=t[0].replace(/#! ?/,"").split(" ");e=n.split("/").pop();return"env"===e?r:r?e+" "+r:e},wc=C.default,xc=m,jc=c
+,Ec="win32"===process.platform,Oc=/\.(?:com|exe)$/i,Sc=/node_modules[\\/].bin[\\/][^\\/]+\.cmd$/i,
+Ic="win32"===process.platform,Ac=ha.default,kc={hookChildProcess:function(n,r){if(Ic){const o=n.emit;n.emit=function(e,t
 ){if("exit"===e){e=ge(t,r);if(e)return o.call(n,"error",e)}return o.apply(n,arguments)}}},verifyENOENT:ge,
-verifyENOENTSync:function(e,t){return Sc&&1===e&&!t.file?de(t.original,"spawnSync"):null},notFoundError:de},kc=(
-p.exports=me,p.exports.spawn=me,p.exports.sync=function(e,t,n){e=De(e,t,n);const r=Ic.spawnSync(e.command,e.args,
-e.options);return r.error=r.error||Ac.verifyENOENTSync(r.status,e),r},p.exports._parse=De,p.exports._enoent=Ac,
-Ru=p.exports,["env"]),Tc=Object.getOwnPropertyDescriptor(Function.prototype,"toString"),
-Pc=Object.getOwnPropertyDescriptor(Function.prototype.toString,"name"),Rc=new WeakMap,Cc=(t,n={})=>{function r(...e){if(
-Rc.set(r,++i),1===i)o=t.apply(this,e),t=null;else if(!0===n.throw)throw new Error(
+verifyENOENTSync:function(e,t){return Ic&&1===e&&!t.file?de(t.original,"spawnSync"):null},notFoundError:de},Tc=(
+p.exports=me,p.exports.spawn=me,p.exports.sync=function(e,t,n){e=De(e,t,n);const r=Ac.spawnSync(e.command,e.args,
+e.options);return r.error=r.error||kc.verifyENOENTSync(r.status,e),r},p.exports._parse=De,p.exports._enoent=kc,
+Ru=p.exports,["env"]),Pc=Object.getOwnPropertyDescriptor(Function.prototype,"toString"),
+Rc=Object.getOwnPropertyDescriptor(Function.prototype.toString,"name"),Cc=new WeakMap,Nc=(t,n={})=>{function r(...e){if(
+Cc.set(r,++i),1===i)o=t.apply(this,e),t=null;else if(!0===n.throw)throw new Error(
 `Function \`${u}\` can only be called once`);return o}if("function"!=typeof t)throw new TypeError("Expected a function")
 let o,i=0;const u=t.displayName||t.name||"<anonymous>";var e,a,c,s,l,f,p,[h,d,{ignoreNonConfigurable:g=!1}={}]=[r,t],
 m=h.name;for(const y of Reflect.ownKeys(d))e=h,l=d,a=y,c=g,
@@ -1315,9 +1315,9 @@ l=Object.getOwnPropertyDescriptor(l,a),void 0!==s&&!s.configurable&&(
 s.writable!==l.writable||s.enumerable!==l.enumerable||s.configurable!==l.configurable||!s.writable&&s.value!==l.value
 )&&c||Object.defineProperty(e,a,l));return f=h,(p=Object.getPrototypeOf(d))!==Object.getPrototypeOf(f
 )&&Object.setPrototypeOf(f,p),f=h,p=d,m=""===m?"":`with ${m.trim()}() `,m=((e,t)=>`/* Wrapped ${e}*/
-`+t).bind(null,m,p.toString()),Object.defineProperty(m,"name",Pc),Object.defineProperty(f,"toString",v(v({},Tc),{},{
-value:m})),Rc.set(r,i),r},Nc=(Cc.callCount=e=>{if(Rc.has(e))return Rc.get(e);throw new Error(
-`The given function \`${e.name}\` is not wrapped by the \`onetime\` package`)},34),Lc=[{name:"SIGHUP",number:1,
+`+t).bind(null,m,p.toString()),Object.defineProperty(m,"name",Rc),Object.defineProperty(f,"toString",v(v({},Pc),{},{
+value:m})),Cc.set(r,i),r},Lc=(Nc.callCount=e=>{if(Cc.has(e))return Cc.get(e);throw new Error(
+`The given function \`${e.name}\` is not wrapped by the \`onetime\` package`)},34),Mc=[{name:"SIGHUP",number:1,
 action:"terminate",description:"Terminal closed",standard:"posix"},{name:"SIGINT",number:2,action:"terminate",
 description:"User interruption with CTRL-C",standard:"ansi"},{name:"SIGQUIT",number:3,action:"core",
 description:"User interruption with CTRL-\\",standard:"posix"},{name:"SIGILL",number:4,action:"core",
@@ -1353,83 +1353,84 @@ description:"Watched event",standard:"other"},{name:"SIGINFO",number:29,action:"
 description:"Request for process information",standard:"other"},{name:"SIGPWR",number:30,action:"terminate",
 description:"Device running out of power",standard:"systemv"},{name:"SIGSYS",number:31,action:"core",
 description:"Invalid system call",standard:"other"},{name:"SIGUNUSED",number:31,action:"terminate",
-description:"Invalid system call",standard:"other"}],Mc=function(){const e=Be();return e.reduce($e,{})}();{const vs=Be()
+description:"Invalid system call",standard:"other"}],Fc=function(){const e=Be();return e.reduce($e,{})}();{const vs=Be()
 ea=Array.from({length:65},(e,t)=>{var n,r=vs,o=(n=t,void 0!==(o=(r=r).find(({name:e})=>ba.constants.signals[e]===n)
 )?o:r.find(e=>e.number===n));if(void 0===o)return{};var{name:r,description:o,supported:i,action:u,forced:a,standard:c}=o
 return{[t]:{name:r,number:t,description:o,supported:i,action:u,forced:a,standard:c}}}),Object.assign({},...ea)}
-const Fc=({timedOut:e,timeout:t,errorCode:n,signal:r,signalDescription:o,exitCode:i,isCanceled:u}
+const Bc=({timedOut:e,timeout:t,errorCode:n,signal:r,signalDescription:o,exitCode:i,isCanceled:u}
 )=>e?`timed out after ${t} milliseconds`:u?"was canceled":void 0!==n?"failed with "+n:void 0!==r?`was killed with ${r} (${o})`:void 0!==i?"failed with exit code "+i:"failed"
-,Bc=({stdout:e,stderr:t,all:n,error:r,signal:o,exitCode:i,command:u,escapedCommand:a,timedOut:c,isCanceled:s,killed:l,
-parsed:{options:{timeout:f}}})=>{var p,h;i=null===i?void 0:i,p=void 0===(o=null===o?void 0:o)?void 0:Mc[o].description,
-h=r&&r.code,f=`Command ${Fc({timedOut:c,timeout:f,errorCode:h,signal:o,signalDescription:p,exitCode:i,isCanceled:s}
+,$c=({stdout:e,stderr:t,all:n,error:r,signal:o,exitCode:i,command:u,escapedCommand:a,timedOut:c,isCanceled:s,killed:l,
+parsed:{options:{timeout:f}}})=>{var p,h;i=null===i?void 0:i,p=void 0===(o=null===o?void 0:o)?void 0:Fc[o].description,
+h=r&&r.code,f=`Command ${Bc({timedOut:c,timeout:f,errorCode:h,signal:o,signalDescription:p,exitCode:i,isCanceled:s}
 )}: `+u;const d=(h="[object Error]"===Object.prototype.toString.call(r))?f+`
 `+r.message:f;return f=[d,t,e].filter(Boolean).join("\n"),h?(r.originalMessage=r.message,r.message=f):r=new Error(f),
 r.shortMessage=d,r.command=u,r.escapedCommand=a,r.exitCode=i,r.signal=o,r.signalDescription=p,r.stdout=e,r.stderr=t,
 void 0!==n&&(r.all=n),"bufferedData"in r&&delete r.bufferedData,r.failed=!0,r.timedOut=Boolean(c),r.isCanceled=s,
-r.killed=l&&!c,r},$c=["stdin","stdout","stderr"],Gc=(O={exports:{}},da.default.PassThrough),Dc=ma.default.constants,Uc=(
-T=da.default,ga.default.promisify),Wc=Uc(T.pipeline);class zc extends Error{constructor(){super("maxBuffer exceeded"),
+r.killed=l&&!c,r},Gc=["stdin","stdout","stderr"],Dc=(O={exports:{}},da.default.PassThrough),Uc=ma.default.constants,Wc=(
+T=da.default,ga.default.promisify),zc=Wc(T.pipeline);class qc extends Error{constructor(){super("maxBuffer exceeded"),
 this.name="MaxBufferError"}}O.exports=ve,O.exports.buffer=(e,t)=>ve(e,v(v({},t),{},{encoding:"buffer"})),
-O.exports.array=(e,t)=>ve(e,v(v({},t),{},{array:!0})),O.exports.MaxBufferError=zc,Cu=O.exports;
-const qc=da.default.PassThrough,Vc=(Nu=function(){function t(e){return Array.isArray(e)?e.forEach(t):(r.push(e),e.once(
+O.exports.array=(e,t)=>ve(e,v(v({},t),{},{array:!0})),O.exports.MaxBufferError=qc,Cu=O.exports;
+const Vc=da.default.PassThrough,Hc=(Nu=function(){function t(e){return Array.isArray(e)?e.forEach(t):(r.push(e),e.once(
 "end",n.bind(null,e)),e.once("error",o.emit.bind(o,"error")),e.pipe(o,{end:!1})),this}function n(t){!(r=r.filter(
-function(e){return e!==t})).length&&o.readable&&o.end()}var r=[],o=new qc({objectMode:!0});return o.setMaxListeners(0),
+function(e){return e!==t})).length&&o.readable&&o.end()}var r=[],o=new Vc({objectMode:!0});return o.setMaxListeners(0),
 o.add=t,o.isEmpty=function(){return 0==r.length},o.on("unpipe",n),Array.prototype.slice.call(arguments).forEach(t),o},
-async(e,t)=>{if(e){e.destroy();try{return await t}catch(e){return e.bufferedData}}}),Hc=(e,{encoding:t,buffer:n,
-maxBuffer:r})=>{if(e&&n)return t?Cu(e,{encoding:t,maxBuffer:r}):Cu.buffer(e,{maxBuffer:r})},Kc=(async()=>{})(
-).constructor.prototype,Zc=["then","catch","finally"].map(e=>[e,Reflect.getOwnPropertyDescriptor(Kc,e)]),Xc=(e,t)=>{for(
-const[r,o]of Zc){var n="function"==typeof t?(...e)=>Reflect.apply(o.value,t(),e):o.value.bind(t);Reflect.defineProperty(
-e,r,v(v({},o),{},{value:n}))}return e},Yc=(e,t=[])=>Array.isArray(t)?[e,...t]:[e],Jc=/^[\w.-]+$/,Qc=/"/g,es=(e,t,n)=>{
+async(e,t)=>{if(e){e.destroy();try{return await t}catch(e){return e.bufferedData}}}),Kc=(e,{encoding:t,buffer:n,
+maxBuffer:r})=>{if(e&&n)return t?Cu(e,{encoding:t,maxBuffer:r}):Cu.buffer(e,{maxBuffer:r})},Zc=(async()=>{})(
+).constructor.prototype,Xc=["then","catch","finally"].map(e=>[e,Reflect.getOwnPropertyDescriptor(Zc,e)]),Yc=(e,t)=>{for(
+const[r,o]of Xc){var n="function"==typeof t?(...e)=>Reflect.apply(o.value,t(),e):o.value.bind(t);Reflect.defineProperty(
+e,r,v(v({},o),{},{value:n}))}return e},Jc=(e,t=[])=>Array.isArray(t)?[e,...t]:[e],Qc=/^[\w.-]+$/,es=/"/g,ts=(e,t,n)=>{
 return"string"==typeof t||ya.Buffer.isBuffer(t)?e.stripFinalNewline?(r="string"==typeof(e=t)?"\n":"\n".charCodeAt(),
 o="string"==typeof e?"\r":"\r".charCodeAt(),(e=e[e.length-1]===r?e.slice(0,-1):e)[e.length-1]===o?e.slice(0,-1):e
-):t:void 0===n?void 0:"";var r,o},ts=ic.createLogger("SyncGitUtils");class ns{static getGitDir(e){let t=e,n=t;do{if(
-ts.debug("getGitDir: Searching git directory from ",t),t=n,L.fileExists(C.default.resolve(t,".git")))return t}while((
-n=C.default.dirname(t))!==t)}static initGit(){var e=ns.getGitDir(process.cwd());e?ts.warn(
-"Warning! Git directory already exists: ",e):(ts.debug("Creating git directory"),_e("git",["init"],{stdio:Sa}))}
-static addFiles(e){var t=ie(e)?[e]:e;ts.debug("addFiles: Adding files: ",e),_e("git",["add",...t],{stdio:Sa})}
-static commit(e){ts.debug("commit with: ",e),_e("git",["commit","-m",e],{stdio:Sa})}static renameMainBranch(e){ts.debug(
-"rename branch: ",e),_e("git",["branch","-M",e],{stdio:Sa})}static addSubModule(e,t){L.fileExists(t)?ts.warn(
-"Warning! Git sub module directory already exists: ",t):_e("git",["submodule","add",e,t],{stdio:Sa})}
-static setSubModuleBranch(e,t){_e("git",["config","-f",".gitmodules",`submodule.${e}.branch`,t],{stdio:Sa})}
-static initSubModule(e,t,n){var r=C.default.dirname(t);ts.debug("initSubModule: Creating: ",r),L.mkdirp(r),ts.debug(
-"initSubModule: Adding submodule: ",e,t),ns.addSubModule(e,t),ts.debug("initSubModule: Configuring branch for ",e,t,": "
-,n),ns.setSubModuleBranch(t,n)}}const rs=ic.createLogger("initPackage"),os=ic.createLogger("initFiles"),
-is=ic.createLogger("main");(ta=function(e){if(e){if(function(){switch(e){case t.DEBUG:case t.INFO:case t.WARN:
-case t.ERROR:case t.NONE:return 1;default:return}}())return e;switch(e=(""+e).toUpperCase()){case"ALL":case"DEBUG":
-return t.DEBUG;case"INFO":return t.INFO;case"WARN":case"WARNING":return t.WARN;case"ERR":case"ERROR":return t.ERROR;
-case"FALSE":case"OFF":case"QUIET":case"SILENT":case"NONE":return t.NONE;default:return}}}(_a))&&(is.debug(
-"Setting log level as ",ta),ic.setLogLevel(ta)),async function(){var n,r,o,i,u,a,c,e,s;const t=require("path");
-let l=process.cwd();(e=process.argv.slice(2).filter(e=>!e.startsWith("-")).shift())&&(e=t.resolve(l,e),is.debug(
-"Creating project directory: ",e),L.mkdirp(e),process.chdir(e),l=e),e={dev:!1,exact:!1,noSave:!1,bundle:!1,verbose:!1,
-global:!1,prefer:"npm",stdio:Sa,cwd:l},is.debug("Initial install config: ",e),s=await Uu.getPackageManager(e),is.debug(
-"Initializing files using ",s);{s=s;const f=require("path");if(os.debug("Initializing package.json using ",s),s=s,
-o=process.argv.slice(2).filter(e=>e.startsWith("-")),rs.debug("Executing: ",s,"init",...o),_e(s,["init",...o],{stdio:Sa}
-),s=f.resolve("package.json"),L.fileExists(s)){if(o=f.dirname(s),a=f.resolve(__dirname,"../templates"),n=f.basename(o),
-r=f.resolve(o,"./src"),i=f.resolve(r,"./constants"),u=f.resolve(r,"./controllers"),os.debug("Creating directory: ",i),
-L.mkdirp(i),os.debug("Creating directory: ",u),L.mkdirp(u),c={"GIT-ORGANISATION":"@heusalagroup",
+):t:void 0===n?void 0:"";var r,o},ns=uc.createLogger("SyncGitUtils");class L{static getGitDir(e){let t=e,n=t;do{if(
+ns.debug("getGitDir: Searching git directory from ",t),t=n,N.fileExists(C.default.resolve(t,".git")))return t}while((
+n=C.default.dirname(t))!==t)}static async initGit(){var e=L.getGitDir(process.cwd());e?ns.warn(
+"Warning! Git directory already exists: ",e):(ns.debug("Creating git directory"),await L._git(["init"]))}
+static async addFiles(e){var t=ie(e)?[e]:e;ns.debug("addFiles: Adding files: ",e),await L._git(["add",...t])}
+static async commit(e){ns.debug("commit with: ",e),await L._git(["commit","-m",e])}static async renameMainBranch(e){
+ns.debug("rename branch: ",e),await L._git(["branch","-M",e])}static async addSubModule(e,t){N.fileExists(t)?ns.warn(
+"Warning! Git sub module directory already exists: ",t):await L._git(["submodule","add",e,t])}
+static async setSubModuleBranch(e,t){await L._git(["config","-f",".gitmodules",`submodule.${e}.branch`,t])}
+static async initSubModule(e,t,n){var r=C.default.dirname(t);ns.debug("initSubModule: Creating: ",r),N.mkdirp(r),
+ns.debug("initSubModule: Adding submodule: ",e,t),await L.addSubModule(e,t),ns.debug(
+"initSubModule: Configuring branch for ",e,t,": ",n),await L.setSubModuleBranch(t,n)}static async _git(e){await _e("git"
+,e,{stdio:Ia})}}const rs=uc.createLogger("initPackage"),os=uc.createLogger("initFiles"),is=uc.createLogger("main");(
+ta=function(e){if(e){if(function(){switch(e){case t.DEBUG:case t.INFO:case t.WARN:case t.ERROR:case t.NONE:return 1;
+default:return}}())return e;switch(e=(""+e).toUpperCase()){case"ALL":case"DEBUG":return t.DEBUG;case"INFO":return t.INFO
+case"WARN":case"WARNING":return t.WARN;case"ERR":case"ERROR":return t.ERROR;case"FALSE":case"OFF":case"QUIET":
+case"SILENT":case"NONE":return t.NONE;default:return}}}(_a))&&(is.debug("Setting log level as ",ta),uc.setLogLevel(ta)),
+async function(){var n,r,o,i,u,a,c,e,s;const t=require("path");let l=process.cwd();(e=process.argv.slice(2).filter(
+e=>!e.startsWith("-")).shift())&&(e=t.resolve(l,e),is.debug("Creating project directory: ",e),N.mkdirp(e),process.chdir(
+e),l=e),e={dev:!1,exact:!1,noSave:!1,bundle:!1,verbose:!1,global:!1,prefer:"npm",stdio:Ia,cwd:l},is.debug(
+"Initial install config: ",e),s=await Uu.getPackageManager(e),is.debug("Initializing files using ",s);{s=s;
+const f=require("path");if(os.debug("Initializing package.json using ",s),s=s,o=process.argv.slice(2).filter(
+e=>e.startsWith("-")),rs.debug("Executing: ",s,"init",...o),await _e(s,["init",...o],{stdio:Ia}),s=f.resolve(
+"package.json"),N.fileExists(s)){if(o=f.dirname(s),a=f.resolve(__dirname,"../templates"),n=f.basename(o),r=f.resolve(o,
+"./src"),i=f.resolve(r,"./constants"),u=f.resolve(r,"./controllers"),os.debug("Creating directory: ",i),N.mkdirp(i),
+os.debug("Creating directory: ",u),N.mkdirp(u),c={"GIT-ORGANISATION":"@heusalagroup",
 "ORGANISATION-NAME":"Heusala Group Ltd","ORGANISATION-EMAIL":"info@heusalagroup.fi","CURRENT-YEAR":""+(new Date
 ).getFullYear(),"PROJECT-NAME":n,projectName:Xt.exports.camelCase(n)},os.debug("Initializing git if necessary"),
-ns.initGit(),L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./LICENSE"),f.resolve(o,"./LICENSE"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./README.md"),f.resolve(o,"./README.md"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./gitignore"),f.resolve(o,"./.gitignore"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./Dockerfile"),f.resolve(o,"./Dockerfile"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./docker-compose.yml"),f.resolve(o,"./docker-compose.yml"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./babel.config.json"),f.resolve(o,"./babel.config.json"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./rollup.config.js"),f.resolve(o,"./rollup.config.js"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./tsconfig.json"),f.resolve(o,"./tsconfig.json"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/constants/build.ts"),f.resolve(i,"./build.ts"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/constants/runtime.ts"),f.resolve(i,"./runtime.ts"),c),
-L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/controllers/BackendController.ts"),f.resolve(u,
-"./BackendController.ts"),c),L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/main.ts"),f.resolve(r,
-"./main.ts"),c),o=`./${n}.ts`,i=`./src/${n}.ts`,L.copyTextFileWithReplacementsIfMissing(f.resolve(a,
-"./src/project-name.ts"),f.resolve(r,o),c),u=`./dist/${n}.js`,!fe(a=L.readJsonFile(s)))throw new TypeError(
+await L.initGit(),N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./LICENSE"),f.resolve(o,"./LICENSE"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./README.md"),f.resolve(o,"./README.md"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./gitignore"),f.resolve(o,"./.gitignore"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./Dockerfile"),f.resolve(o,"./Dockerfile"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./docker-compose.yml"),f.resolve(o,"./docker-compose.yml"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./babel.config.json"),f.resolve(o,"./babel.config.json"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./rollup.config.js"),f.resolve(o,"./rollup.config.js"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./tsconfig.json"),f.resolve(o,"./tsconfig.json"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/constants/build.ts"),f.resolve(i,"./build.ts"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/constants/runtime.ts"),f.resolve(i,"./runtime.ts"),c),
+N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/controllers/BackendController.ts"),f.resolve(u,
+"./BackendController.ts"),c),N.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/main.ts"),f.resolve(r,
+"./main.ts"),c),o=`./${n}.ts`,i=`./src/${n}.ts`,N.copyTextFileWithReplacementsIfMissing(f.resolve(a,
+"./src/project-name.ts"),f.resolve(r,o),c),u=`./dist/${n}.js`,!fe(a=N.readJsonFile(s)))throw new TypeError(
 "package.json was invalid");let e=null!=(r=null==a?void 0:a.scripts)?r:{},t=(fe(e)||(e={}),null!=(o=null==a?void 0:a.bin
 )?o:{});fe(t)||(t={}),c=F(F({},a),{},{private:!0,main:u,bin:F(F({},t),{},{[n]:u}),scripts:F(F({},e),{},{
 "start-prod":"node "+u,start:"ts-node "+i,build:"rollup -c"})}),Pu(c,a)?os.warn(
-"Warning! No changes to package.json detected"):L.writeJsonFile(s,c),os.debug(
-"Initializing git sub module: sendanor/typescript from main branch"),ns.initSubModule(
-"git@github.com:sendanor/typescript.git","src/fi/nor/ts","main"),os.debug("Adding files to git"),ns.addFiles([
+"Warning! No changes to package.json detected"):N.writeJsonFile(s,c),os.debug(
+"Initializing git sub module: sendanor/typescript from main branch"),await L.initSubModule(
+"git@github.com:sendanor/typescript.git","src/fi/nor/ts","main"),os.debug("Adding files to git"),await L.addFiles([
 "./LICENSE","./README.md","./.gitignore","./Dockerfile","./docker-compose.yml","./babel.config.json",
 "./rollup.config.js","./tsconfig.json","./package.json","./package-lock.json","./src"]),os.debug("Initial git commit"),
-ns.commit("first commit"),os.debug("Renaming main git branch"),ns.renameMainBranch("main")}else os.warn(
-"Warning! package.json did not exist: ",s)}await 0,is.debug("Installing packages: ",Ia),await Uu.install(Ia,e)}().catch(
+await L.commit("first commit"),os.debug("Renaming main git branch"),await L.renameMainBranch("main")}else os.warn(
+"Warning! package.json did not exist: ",s)}await 0,is.debug("Installing packages: ",Aa),await Uu.install(Aa,e)}().catch(
 e=>{console.error(e)});
