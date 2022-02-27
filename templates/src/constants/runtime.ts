@@ -1,4 +1,4 @@
-// Copyright (c) 2021. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+// Copyright (c) CURRENT-YEAR. ORGANISATION-NAME <ORGANISATION-EMAIL>. All rights reserved.
 
 import { parseNonEmptyString } from "./fi/nor/ts/modules/lodash";
 import { LogLevel, parseLogLevel } from "./fi/nor/ts/types/LogLevel";

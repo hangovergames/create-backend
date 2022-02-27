@@ -5,6 +5,7 @@ import path from "path";
 import { DEFAULT_EXECA_STDIO } from "./constants/runtime";
 import { SyncFileUtils } from "./fi/nor/ts/SyncFileUtils";
 import { LogService } from "./fi/nor/ts/LogService";
+import { isString } from "./fi/nor/ts/modules/lodash";
 
 const LOG = LogService.createLogger('SyncGitUtils');
 
@@ -17,16 +18,14 @@ export class SyncGitUtils {
      */
     static getGitDir (filePath: string) : string | undefined {
 
-        let dirPath : string;
-        if ( SyncFileUtils.fileExists(filePath) && SyncFileUtils.isDirectory(filePath) ) {
-            dirPath = filePath;
-        } else {
-            dirPath = path.dirname(filePath);
-        }
-
+        let dirPath : string = filePath;
         let newDirPath : string = dirPath;
 
         do {
+
+            LOG.debug(`getGitDir: Searching git directory from `, dirPath);
+
+            dirPath = newDirPath;
 
             if (SyncFileUtils.fileExists(path.resolve(dirPath, '.git')) ) {
                 return dirPath;
@@ -34,7 +33,7 @@ export class SyncGitUtils {
 
             newDirPath = path.dirname(dirPath);
 
-        } while(newDirPath !== dirPath);
+        } while (newDirPath !== dirPath);
 
         return undefined;
 
@@ -45,6 +44,7 @@ export class SyncGitUtils {
         const currentGitDir = SyncGitUtils.getGitDir(process.cwd());
 
         if (!currentGitDir) {
+            LOG.debug(`Creating git directory`);
             execa(
                 'git',
                 [ "init" ],
@@ -55,6 +55,21 @@ export class SyncGitUtils {
         } else {
             LOG.warn(`Warning! Git directory already exists: `, currentGitDir);
         }
+
+    }
+
+    static addFiles (filePath: string | string[]) {
+
+        const files = isString(filePath) ? [ filePath ] : filePath;
+
+        LOG.debug(`gitAdd: Adding file: `, filePath);
+        execa(
+            'git',
+            [ "add", ...files ],
+            {
+                stdio: DEFAULT_EXECA_STDIO
+            }
+        );
 
     }
 

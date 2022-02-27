@@ -6,6 +6,8 @@ import { camelCase } from "lodash";
 import { SyncFileUtils } from "./fi/nor/ts/SyncFileUtils";
 import { isReadonlyJsonObject } from "./fi/nor/ts/Json";
 import { isEqual } from "./fi/nor/ts/modules/lodash";
+import { SyncGitUtils } from "./SyncGitUtils";
+import path from "path";
 
 const LOG = LogService.createLogger('initFiles');
 
@@ -19,7 +21,7 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
 
     const packageJsonPath = path.resolve("package.json");
     if ( !SyncFileUtils.fileExists(packageJsonPath) ) {
-        LOG.warn(`Warning! package.json did not exist: `, packageJsonPath);
+        LOG.warn(`initFiles: Warning! package.json did not exist: `, packageJsonPath);
         return;
     }
 
@@ -36,11 +38,23 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     LOG.debug(`initFiles: Creating directory: `, srcControllersDir);
     SyncFileUtils.mkdirp(srcControllersDir);
 
+    const currentYear = (new Date().getFullYear());
+
     const replacements = {
+        'GIT-ORGANISATION' : `@heusalagroup`,
+        'ORGANISATION-NAME' : `Heusala Group Ltd`,
+        'ORGANISATION-EMAIL' : `info@heusalagroup.fi`,
+        'CURRENT-YEAR' : `${currentYear}`,
         'PROJECT-NAME' : mainName,
         'projectName' : camelCase(mainName)
     };
 
+    LOG.debug(`initFiles: Initializing git if necessary`);
+    SyncGitUtils.initGit();
+
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./LICENSE"), path.resolve(pkgDir, "./LICENSE"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./README.md"), path.resolve(pkgDir, "./README.md"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./.gitignore"), path.resolve(pkgDir, "./.gitignore"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./Dockerfile"), path.resolve(pkgDir, "./Dockerfile"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./docker-compose.yml"), path.resolve(pkgDir, "./docker-compose.yml"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./babel.config.json"), path.resolve(pkgDir, "./babel.config.json"), replacements);
@@ -95,5 +109,24 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     } else {
         LOG.warn(`Warning! No changes to package.json detected`);
     }
+
+    SyncGitUtils.addFiles(
+        [
+            "./LICENSE",
+            "./README.md",
+            "./.gitignore",
+            "./Dockerfile",
+            "./docker-compose.yml",
+            "./babel.config.json",
+            "./rollup.config.js",
+            "./tsconfig.json",
+            "./package.json",
+            "./package-lock.json",
+            "./src"
+        ]
+    );
+
+    LOG.debug(`Initializing git sub module: sendanor/typescript from main branch`);
+    SyncGitUtils.initSubModule('git@github.com:sendanor/typescript.git', 'src/fi/nor/ts', 'main');
 
 }
