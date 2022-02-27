@@ -7,7 +7,7 @@ import { SyncFileUtils } from "./fi/nor/ts/SyncFileUtils";
 import { LogService } from "./fi/nor/ts/LogService";
 import { isString } from "./fi/nor/ts/modules/lodash";
 
-const LOG = LogService.createLogger('SyncGitUtils');
+const LOG = LogService.createLogger('GitUtils');
 
 export class GitUtils {
 

@@ -1,6 +1,6 @@
 {
   "name": "@heusalagroup/create-backend",
-  "version": "0.0.30",
+  "version": "1.0.0",
   "description": "Create TypeScript enabled NodeJS REST projects inspired from Spring Boot",
   "main": "index.js",
   "bin": "./dist/create-backend.js",

@@ -1381,7 +1381,7 @@ var e=this.__wrapped__;return e instanceof m?(e=e,(e=(e=this.__actions__.length?
 ).__actions__.push({func:un,args:[tn],thisArg:Wi}),new g(e,this.__chain__)):this.thru(tn)},
 d.prototype.toJSON=d.prototype.valueOf=d.prototype.value=function(){return Ge(this.__wrapped__,this.__actions__)},
 d.prototype.first=d.prototype.head,sr&&(d.prototype[sr]=function(){return this}),d}(),e?((e.exports=Vi)._=Vi,t._=Vi
-):qi._=Vi}.call(A),Ra.createLogger("SyncGitUtils"));class N{static getGitDir(e){let t=e,n=t;do{if(is.debug(
+):qi._=Vi}.call(A),Ra.createLogger("GitUtils"));class N{static getGitDir(e){let t=e,n=t;do{if(is.debug(
 "getGitDir: Searching git directory from ",t),t=n,C.fileExists(R.default.resolve(t,".git")))return t}while((
 n=R.default.dirname(t))!==t)}static async initGit(){var e=N.getGitDir(process.cwd());e?is.warn(
 "Warning! Git directory already exists: ",e):(is.debug("Creating git directory"),await N._git(["init"]))}

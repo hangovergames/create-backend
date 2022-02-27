@@ -15,5 +15,7 @@ npm run build
 ### Start the server in production mode
 
 ```
-npm start-prod
+npm run start-prod
 ```
+
+...and open http://0.0.0.0:3000
