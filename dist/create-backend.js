@@ -1397,39 +1397,39 @@ is=ic.createLogger("main");(ta=function(e){if(e){if(function(){switch(e){case t.
 case t.ERROR:case t.NONE:return 1;default:return}}())return e;switch(e=(""+e).toUpperCase()){case"ALL":case"DEBUG":
 return t.DEBUG;case"INFO":return t.INFO;case"WARN":case"WARNING":return t.WARN;case"ERR":case"ERROR":return t.ERROR;
 case"FALSE":case"OFF":case"QUIET":case"SILENT":case"NONE":return t.NONE;default:return}}}(_a))&&(is.debug(
-"Setting log level as ",ta),ic.setLogLevel(ta)),async function(){var n,r,o,i,u,a,c,s,e,l;const t=require("path");
-let f=process.cwd();(e=process.argv.slice(2).filter(e=>!e.startsWith("-")).shift())&&(e=t.resolve(f,e),is.debug(
-"Creating project directory: ",e),L.mkdirp(e),process.chdir(e),f=e),e={dev:!1,exact:!1,noSave:!1,bundle:!1,verbose:!1,
-global:!1,prefer:"npm",stdio:Sa,cwd:f},is.debug("Initial install config: ",e),l=await Uu.getPackageManager(e),is.debug(
-"Initializing files using ",l);{l=l;const p=require("path");if(n=p.resolve("package.json"),L.fileExists(n)){if(
-a=p.dirname(n),r=p.resolve(__dirname,"../templates"),o=p.basename(a),i=p.resolve(a,"./src"),c=p.resolve(i,"./constants")
-,s=p.resolve(i,"./controllers"),os.debug("initFiles: Creating directory: ",c),L.mkdirp(c),os.debug(
-"initFiles: Creating directory: ",s),L.mkdirp(s),u={"GIT-ORGANISATION":"@heusalagroup",
+"Setting log level as ",ta),ic.setLogLevel(ta)),async function(){var n,r,o,i,u,a,c,e,s;const t=require("path");
+let l=process.cwd();(e=process.argv.slice(2).filter(e=>!e.startsWith("-")).shift())&&(e=t.resolve(l,e),is.debug(
+"Creating project directory: ",e),L.mkdirp(e),process.chdir(e),l=e),e={dev:!1,exact:!1,noSave:!1,bundle:!1,verbose:!1,
+global:!1,prefer:"npm",stdio:Sa,cwd:l},is.debug("Initial install config: ",e),s=await Uu.getPackageManager(e),is.debug(
+"Initializing files using ",s);{s=s;const f=require("path");if(os.debug("Initializing package.json using ",s),s=s,
+o=process.argv.slice(2).filter(e=>e.startsWith("-")),rs.debug("Executing: ",s,"init",...o),_e(s,["init",...o],{stdio:Sa}
+),s=f.resolve("package.json"),L.fileExists(s)){if(o=f.dirname(s),a=f.resolve(__dirname,"../templates"),n=f.basename(o),
+r=f.resolve(o,"./src"),i=f.resolve(r,"./constants"),u=f.resolve(r,"./controllers"),os.debug("Creating directory: ",i),
+L.mkdirp(i),os.debug("Creating directory: ",u),L.mkdirp(u),c={"GIT-ORGANISATION":"@heusalagroup",
 "ORGANISATION-NAME":"Heusala Group Ltd","ORGANISATION-EMAIL":"info@heusalagroup.fi","CURRENT-YEAR":""+(new Date
-).getFullYear(),"PROJECT-NAME":o,projectName:Xt.exports.camelCase(o)},os.debug(
-"initFiles: Initializing git if necessary"),ns.initGit(),L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./LICENSE"
-),p.resolve(a,"./LICENSE"),u),L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./README.md"),p.resolve(a,
-"./README.md"),u),L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./gitignore"),p.resolve(a,"./.gitignore"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./Dockerfile"),p.resolve(a,"./Dockerfile"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./docker-compose.yml"),p.resolve(a,"./docker-compose.yml"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./babel.config.json"),p.resolve(a,"./babel.config.json"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./rollup.config.js"),p.resolve(a,"./rollup.config.js"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./tsconfig.json"),p.resolve(a,"./tsconfig.json"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./src/constants/build.ts"),p.resolve(c,"./build.ts"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./src/constants/runtime.ts"),p.resolve(c,"./runtime.ts"),u),
-L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./src/controllers/BackendController.ts"),p.resolve(s,
-"./BackendController.ts"),u),L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./src/main.ts"),p.resolve(i,
-"./main.ts"),u),os.debug("initFiles: Initializing package.json using ",l),a=l,c=process.argv.slice(2).filter(
-e=>e.startsWith("-")),rs.debug("Executing: ",a,"init",...c),_e(a,["init",...c],{stdio:Sa}),s=`./${o}.ts`,
-l=`./src/${o}.ts`,L.copyTextFileWithReplacementsIfMissing(p.resolve(r,"./src/project-name.ts"),p.resolve(i,s),u),
-a=`./dist/${o}.js`,!fe(c=L.readJsonFile(n)))throw new TypeError("package.json was invalid");let e=null!=(
-r=null==c?void 0:c.scripts)?r:{},t=(fe(e)||(e={}),null!=(i=null==c?void 0:c.bin)?i:{});fe(t)||(t={}),s=F(F({},c),{},{
-private:!0,main:a,bin:F(F({},t),{},{[o]:a}),scripts:F(F({},e),{},{"start-prod":"node "+a,start:"ts-node "+l,
-build:"rollup -c"})}),Pu(s,c)?os.warn("Warning! No changes to package.json detected"):L.writeJsonFile(n,s),os.debug(
+).getFullYear(),"PROJECT-NAME":n,projectName:Xt.exports.camelCase(n)},os.debug("Initializing git if necessary"),
+ns.initGit(),L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./LICENSE"),f.resolve(o,"./LICENSE"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./README.md"),f.resolve(o,"./README.md"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./gitignore"),f.resolve(o,"./.gitignore"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./Dockerfile"),f.resolve(o,"./Dockerfile"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./docker-compose.yml"),f.resolve(o,"./docker-compose.yml"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./babel.config.json"),f.resolve(o,"./babel.config.json"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./rollup.config.js"),f.resolve(o,"./rollup.config.js"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./tsconfig.json"),f.resolve(o,"./tsconfig.json"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/constants/build.ts"),f.resolve(i,"./build.ts"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/constants/runtime.ts"),f.resolve(i,"./runtime.ts"),c),
+L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/controllers/BackendController.ts"),f.resolve(u,
+"./BackendController.ts"),c),L.copyTextFileWithReplacementsIfMissing(f.resolve(a,"./src/main.ts"),f.resolve(r,
+"./main.ts"),c),o=`./${n}.ts`,i=`./src/${n}.ts`,L.copyTextFileWithReplacementsIfMissing(f.resolve(a,
+"./src/project-name.ts"),f.resolve(r,o),c),u=`./dist/${n}.js`,!fe(a=L.readJsonFile(s)))throw new TypeError(
+"package.json was invalid");let e=null!=(r=null==a?void 0:a.scripts)?r:{},t=(fe(e)||(e={}),null!=(o=null==a?void 0:a.bin
+)?o:{});fe(t)||(t={}),c=F(F({},a),{},{private:!0,main:u,bin:F(F({},t),{},{[n]:u}),scripts:F(F({},e),{},{
+"start-prod":"node "+u,start:"ts-node "+i,build:"rollup -c"})}),Pu(c,a)?os.warn(
+"Warning! No changes to package.json detected"):L.writeJsonFile(s,c),os.debug(
 "Initializing git sub module: sendanor/typescript from main branch"),ns.initSubModule(
 "git@github.com:sendanor/typescript.git","src/fi/nor/ts","main"),os.debug("Adding files to git"),ns.addFiles([
 "./LICENSE","./README.md","./.gitignore","./Dockerfile","./docker-compose.yml","./babel.config.json",
 "./rollup.config.js","./tsconfig.json","./package.json","./package-lock.json","./src"]),os.debug("Initial git commit"),
 ns.commit("first commit"),os.debug("Renaming main git branch"),ns.renameMainBranch("main")}else os.warn(
-"initFiles: Warning! package.json did not exist: ",n)}await 0,is.debug("Installing packages: ",Ia),await Uu.install(Ia,e
-)}().catch(e=>{console.error(e)});
+"Warning! package.json did not exist: ",s)}await 0,is.debug("Installing packages: ",Ia),await Uu.install(Ia,e)}().catch(
+e=>{console.error(e)});

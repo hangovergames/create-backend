@@ -20,9 +20,12 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
 
     const path = require("path");
 
+    LOG.debug(`Initializing package.json using `, pkgManager);
+    initPackage(pkgManager);
+
     const packageJsonPath = path.resolve("package.json");
     if ( !SyncFileUtils.fileExists(packageJsonPath) ) {
-        LOG.warn(`initFiles: Warning! package.json did not exist: `, packageJsonPath);
+        LOG.warn(`Warning! package.json did not exist: `, packageJsonPath);
         return;
     }
 
@@ -33,10 +36,10 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     const srcConstantsDir = path.resolve(srcDir, './constants');
     const srcControllersDir = path.resolve(srcDir, './controllers');
 
-    LOG.debug(`initFiles: Creating directory: `, srcConstantsDir);
+    LOG.debug(`Creating directory: `, srcConstantsDir);
     SyncFileUtils.mkdirp(srcConstantsDir);
 
-    LOG.debug(`initFiles: Creating directory: `, srcControllersDir);
+    LOG.debug(`Creating directory: `, srcControllersDir);
     SyncFileUtils.mkdirp(srcControllersDir);
 
     const currentYear = (new Date().getFullYear());
@@ -50,7 +53,7 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
         'projectName' : camelCase(mainName)
     };
 
-    LOG.debug(`initFiles: Initializing git if necessary`);
+    LOG.debug(`Initializing git if necessary`);
     SyncGitUtils.initGit();
 
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./LICENSE"), path.resolve(pkgDir, "./LICENSE"), replacements);
@@ -65,9 +68,6 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/constants/runtime.ts"), path.resolve(srcConstantsDir, "./runtime.ts"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/controllers/BackendController.ts"), path.resolve(srcControllersDir, "./BackendController.ts"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/main.ts"), path.resolve(srcDir, "./main.ts"), replacements);
-
-    LOG.debug(`initFiles: Initializing package.json using `, pkgManager);
-    initPackage(pkgManager);
 
     const mainFileName = `./${mainName}.ts`;
     const mainSrcFileName = `./src/${mainName}.ts`;
