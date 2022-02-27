@@ -68,7 +68,10 @@ export async function main () : Promise<void> {
     LOG.debug(`Initializing files using `, pkgManager);
     await initFiles(pkgManager);
 
-    LOG.debug(`Initializing sub module: sendanor/typescript from main branch`);
+    LOG.debug(`Initializing git if necessary`);
+    SyncGitUtils.initGit();
+
+    LOG.debug(`Initializing git sub module: sendanor/typescript from main branch`);
     SyncGitUtils.initSubModule('git@github.com:sendanor/typescript.git', 'src/fi/nor/ts', 'main');
 
 }

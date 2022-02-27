@@ -10,6 +10,54 @@ const LOG = LogService.createLogger('SyncGitUtils');
 
 export class SyncGitUtils {
 
+    /**
+     * Returns the git directory path
+     *
+     * @param filePath
+     */
+    static getGitDir (filePath: string) : string | undefined {
+
+        let dirPath : string;
+        if ( SyncFileUtils.fileExists(filePath) && SyncFileUtils.isDirectory(filePath) ) {
+            dirPath = filePath;
+        } else {
+            dirPath = path.dirname(filePath);
+        }
+
+        let newDirPath : string = dirPath;
+
+        do {
+
+            if (SyncFileUtils.fileExists(path.resolve(dirPath, '.git')) ) {
+                return dirPath;
+            }
+
+            newDirPath = path.dirname(dirPath);
+
+        } while(newDirPath !== dirPath);
+
+        return undefined;
+
+    }
+
+    static initGit () {
+
+        const currentGitDir = SyncGitUtils.getGitDir(process.cwd());
+
+        if (!currentGitDir) {
+            execa(
+                'git',
+                [ "init" ],
+                {
+                    stdio: DEFAULT_EXECA_STDIO
+                }
+            );
+        } else {
+            LOG.warn(`Warning! Git directory already exists: `, currentGitDir);
+        }
+
+    }
+
     static addSubModule (
         moduleUrl : string,
         modulePath : string
