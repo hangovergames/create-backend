@@ -17,21 +17,23 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
 
     const path = require("path");
 
-    const pkgPath = path.resolve("package.json");
-    if ( !SyncFileUtils.fileExists(pkgPath) ) {
-        LOG.debug(`initFiles: pkgPath did not exist: `, pkgPath);
+    const packageJsonPath = path.resolve("package.json");
+    if ( !SyncFileUtils.fileExists(packageJsonPath) ) {
+        LOG.warn(`Warning! package.json did not exist: `, packageJsonPath);
         return;
     }
 
+    const pkgDir = path.dirname(packageJsonPath);
     const templatesDir = path.resolve(__dirname, "../templates");
-
-    const mainName = path.basename(path.dirname(pkgPath));
-    const srcDir = path.resolve(pkgPath, './src');
+    const mainName = path.basename(pkgDir);
+    const srcDir = path.resolve(pkgDir, './src');
     const srcConstantsDir = path.resolve(srcDir, './constants');
     const srcControllersDir = path.resolve(srcDir, './controllers');
 
-    LOG.debug(`initFiles: Creating: `, pkgPath);
+    LOG.debug(`initFiles: Creating directory: `, srcConstantsDir);
     SyncFileUtils.mkdirp(srcConstantsDir);
+
+    LOG.debug(`initFiles: Creating directory: `, srcControllersDir);
     SyncFileUtils.mkdirp(srcControllersDir);
 
     const replacements = {
@@ -39,11 +41,11 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
         'projectName' : camelCase(mainName)
     };
 
-    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./Dockerfile"), path.resolve(pkgPath, "./Dockerfile"), replacements);
-    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./docker-compose.yml"), path.resolve(pkgPath, "./docker-compose.yml"), replacements);
-    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./babel.config.json"), path.resolve(pkgPath, "./babel.config.json"), replacements);
-    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./rollup.config.js"), path.resolve(pkgPath, "./rollup.config.js"), replacements);
-    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./tsconfig.json"), path.resolve(pkgPath, "./tsconfig.json"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./Dockerfile"), path.resolve(pkgDir, "./Dockerfile"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./docker-compose.yml"), path.resolve(pkgDir, "./docker-compose.yml"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./babel.config.json"), path.resolve(pkgDir, "./babel.config.json"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./rollup.config.js"), path.resolve(pkgDir, "./rollup.config.js"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./tsconfig.json"), path.resolve(pkgDir, "./tsconfig.json"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/constants/build.ts"), path.resolve(srcConstantsDir, "./build.ts"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/constants/runtime.ts"), path.resolve(srcConstantsDir, "./runtime.ts"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/controllers/BackendController.ts"), path.resolve(srcControllersDir, "./BackendController.ts"), replacements);
@@ -56,7 +58,7 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
 
     const distFile = `./dist/${mainName}.js`;
 
-    const pkgJSON = SyncFileUtils.readJsonFile(pkgPath);
+    const pkgJSON = SyncFileUtils.readJsonFile(packageJsonPath);
 
     if (!isReadonlyJsonObject(pkgJSON)) {
         throw new TypeError('package.json was invalid');
@@ -89,7 +91,7 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     };
 
     if (!isEqual(newPkgJson, pkgJSON)) {
-        SyncFileUtils.writeJsonFile(pkgPath, newPkgJson);
+        SyncFileUtils.writeJsonFile(packageJsonPath, newPkgJson);
     } else {
         LOG.warn(`Warning! No changes to package.json detected`);
     }

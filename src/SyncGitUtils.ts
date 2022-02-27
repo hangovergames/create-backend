@@ -51,15 +51,15 @@ export class SyncGitUtils {
         const parentPath = path.dirname(modulePath);
 
         // mkdir -p src/fi/nor
-        LOG.debug(`setupGitSubModule: Creating: `, parentPath)
+        LOG.debug(`initSubModule: Creating: `, parentPath)
         SyncFileUtils.mkdirp(parentPath);
 
         // git submodule add git@github.com:sendanor/typescript.git src/fi/nor/ts
-        LOG.debug(`setupGitSubModule: Adding submodule: `, moduleUrl, modulePath)
+        LOG.debug(`initSubModule: Adding submodule: `, moduleUrl, modulePath)
         SyncGitUtils.addSubModule(moduleUrl, modulePath);
 
         // git config -f .gitmodules submodule.src/fi/nor/ts.branch main
-        LOG.debug(`setupGitSubModule: Configuring branch for `, moduleUrl, modulePath, ': ', moduleBranch);
+        LOG.debug(`initSubModule: Configuring branch for `, moduleUrl, modulePath, ': ', moduleBranch);
         SyncGitUtils.setSubModuleBranch(modulePath, moduleBranch);
 
     }

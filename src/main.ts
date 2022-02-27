@@ -34,6 +34,7 @@ export async function main () : Promise<void> {
 
     if (dirname) {
         const newCwd = path.resolve(cwd, dirname);
+        LOG.debug(`Creating project directory: `, newCwd);
         SyncFileUtils.mkdirp(newCwd);
         process.chdir(newCwd);
         cwd = newCwd;
