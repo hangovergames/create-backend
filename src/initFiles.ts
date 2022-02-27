@@ -54,7 +54,7 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
 
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./LICENSE"), path.resolve(pkgDir, "./LICENSE"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./README.md"), path.resolve(pkgDir, "./README.md"), replacements);
-    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./.gitignore"), path.resolve(pkgDir, "./.gitignore"), replacements);
+    SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./gitignore"), path.resolve(pkgDir, "./.gitignore"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./Dockerfile"), path.resolve(pkgDir, "./Dockerfile"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./docker-compose.yml"), path.resolve(pkgDir, "./docker-compose.yml"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./babel.config.json"), path.resolve(pkgDir, "./babel.config.json"), replacements);

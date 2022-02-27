@@ -1410,7 +1410,7 @@ if(o=l.dirname(n),c=l.resolve(__dirname,"../templates"),s=l.basename(o),r=l.reso
 ).getFullYear(),"PROJECT-NAME":s,projectName:Qt.exports.camelCase(s)},Qc.debug(
 "initFiles: Initializing git if necessary"),Jc.initGit(),L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./LICENSE"
 ),l.resolve(o,"./LICENSE"),a),L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./README.md"),l.resolve(o,
-"./README.md"),a),L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./.gitignore"),l.resolve(o,"./.gitignore"),a),
+"./README.md"),a),L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./gitignore"),l.resolve(o,"./.gitignore"),a),
 L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./Dockerfile"),l.resolve(o,"./Dockerfile"),a),
 L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./docker-compose.yml"),l.resolve(o,"./docker-compose.yml"),a),
 L.copyTextFileWithReplacementsIfMissing(l.resolve(c,"./babel.config.json"),l.resolve(o,"./babel.config.json"),a),
