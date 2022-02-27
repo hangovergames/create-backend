@@ -8,6 +8,7 @@ import { isReadonlyJsonObject } from "./fi/nor/ts/Json";
 import { isEqual } from "./fi/nor/ts/modules/lodash";
 import { SyncGitUtils } from "./SyncGitUtils";
 import path from "path";
+import { initPackage } from "./initPackage";
 
 const LOG = LogService.createLogger('initFiles');
 
@@ -64,6 +65,9 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/constants/runtime.ts"), path.resolve(srcConstantsDir, "./runtime.ts"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/controllers/BackendController.ts"), path.resolve(srcControllersDir, "./BackendController.ts"), replacements);
     SyncFileUtils.copyTextFileWithReplacementsIfMissing(path.resolve(templatesDir, "./src/main.ts"), path.resolve(srcDir, "./main.ts"), replacements);
+
+    LOG.debug(`initFiles: Initializing package.json using `, pkgManager);
+    initPackage(pkgManager);
 
     const mainFileName = `./${mainName}.ts`;
     const mainSrcFileName = `./src/${mainName}.ts`;
@@ -129,5 +133,11 @@ export function initFiles (pkgManager : SupportedPackageManagers) {
             "./src"
         ]
     );
+
+    LOG.debug(`Initial git commit`);
+    SyncGitUtils.commit('first commit');
+
+    LOG.debug(`Renaming main git branch`);
+    SyncGitUtils.renameMainBranch('main');
 
 }

@@ -73,6 +73,37 @@ export class SyncGitUtils {
 
     }
 
+    static commit (message: string) {
+
+        LOG.debug(`commit with: `, message);
+        execa(
+            'git',
+            [ "commit", '-m', message ],
+            {
+                stdio: DEFAULT_EXECA_STDIO
+            }
+        );
+
+    }
+
+    /**
+     *
+     * git branch -M main
+     * @param newName
+     */
+    static renameMainBranch (newName: string) {
+
+        LOG.debug(`rename branch: `, newName);
+        execa(
+            'git',
+            [ "branch", '-M', newName ],
+            {
+                stdio: DEFAULT_EXECA_STDIO
+            }
+        );
+
+    }
+
     static addSubModule (
         moduleUrl : string,
         modulePath : string
