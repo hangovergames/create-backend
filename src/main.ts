@@ -165,6 +165,7 @@ export async function main () : Promise<void> {
             "./LICENSE",
             "./README.md",
             "./.gitignore",
+            "./.gitmodules",
             "./Dockerfile",
             "./docker-compose.yml",
             "./babel.config.json",

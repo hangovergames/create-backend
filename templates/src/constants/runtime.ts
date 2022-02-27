@@ -1,7 +1,7 @@
 // Copyright (c) CURRENT-YEAR. ORGANISATION-NAME <ORGANISATION-EMAIL>. All rights reserved.
 
-import { parseNonEmptyString } from "./fi/nor/ts/modules/lodash";
-import { LogLevel, parseLogLevel } from "./fi/nor/ts/types/LogLevel";
+import { parseNonEmptyString } from "../fi/nor/ts/modules/lodash";
+import { LogLevel, parseLogLevel } from "../fi/nor/ts/types/LogLevel";
 import {
     BUILD_COMMAND_NAME,
     BUILD_LOG_LEVEL,

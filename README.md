@@ -1,6 +1,6 @@
 # @heusalagroup/create-backend
 
-Create TypeScript enabled REST backends:
+Create TypeScript enabled NodeJS REST backends inspired from Java Spring Boot:
 
 ```
 npm init @heusalagroup/backend ./foo-backend

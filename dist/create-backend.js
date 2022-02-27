@@ -1429,8 +1429,8 @@ let e=null!=(i=null==s?void 0:s.scripts)?i:{},t=(be(e)||(e={}),null!=(u=null==s?
 build:"rollup -c"})}),bi(l,s)?L.warn("Warning! No changes to package.json detected"):C.writeJsonFile(r,l),L.debug(
 "Initializing git sub module: sendanor/typescript from main branch"),await N.initSubModule(
 "git@github.com:sendanor/typescript.git","src/fi/nor/ts","main"),L.debug("Installing packages: ",Ta),await wi.install(Ta
-,n),L.debug("Adding files to git"),await N.addFiles(["./LICENSE","./README.md","./.gitignore","./Dockerfile",
-"./docker-compose.yml","./babel.config.json","./rollup.config.js","./tsconfig.json","./package.json",
+,n),L.debug("Adding files to git"),await N.addFiles(["./LICENSE","./README.md","./.gitignore","./.gitmodules",
+"./Dockerfile","./docker-compose.yml","./babel.config.json","./rollup.config.js","./tsconfig.json","./package.json",
 "./package-lock.json","./src"]),L.debug("Initial git commit"),await N.commit("first commit"),L.debug(
 "Renaming main git branch"),await N.renameMainBranch("main")}else L.warn("Warning! package.json did not exist: ",r)}(
 ).catch(e=>{console.error(e)});

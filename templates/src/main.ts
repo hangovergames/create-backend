@@ -15,10 +15,10 @@ import { LogService, LogLevel } from "./fi/nor/ts/LogService";
 
 LogService.setLogLevel(BACKEND_LOG_LEVEL);
 
-import { CommandExitStatus } from "./fi/nor/ts/command/types/CommandExitStatus";
+import { CommandExitStatus } from "./fi/nor/ts/cmd/types/CommandExitStatus";
 import { RequestClient } from "./fi/nor/ts/RequestClient";
-import { CommandArgumentUtils } from "./fi/nor/ts/command/utils/CommandArgumentUtils";
-import { ParsedCommandArgumentStatus } from "./fi/nor/ts/command/types/ParsedCommandArgumentStatus";
+import { CommandArgumentUtils } from "./fi/nor/ts/cmd/utils/CommandArgumentUtils";
+import { ParsedCommandArgumentStatus } from "./fi/nor/ts/cmd/types/ParsedCommandArgumentStatus";
 import { RequestServer } from "./fi/nor/ts/RequestServer";
 import { BackendController } from "./controllers/BackendController";
 import { RequestRouter } from "./fi/nor/ts/requestServer/RequestRouter";
