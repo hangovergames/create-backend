@@ -11,9 +11,10 @@ import { getPackageManager, install, SupportedPackageManagers } from "pkg-instal
 import { InstallConfig } from "pkg-install/lib/config";
 import { initPackage } from "./initPackage";
 import { initFiles } from "./initFiles";
-import LogService from "./fi/nor/ts/LogService";
+import { LogService } from "./fi/nor/ts/LogService";
 import { parseLogLevel } from "./fi/nor/ts/types/LogLevel";
-import { mkdirp } from "./mkdirp";
+import { SyncFileUtils } from "./fi/nor/ts/SyncFileUtils";
+import { SyncGitUtils } from "./SyncGitUtils";
 
 const LOG = LogService.createLogger('main');
 
@@ -33,7 +34,7 @@ export async function main () : Promise<void> {
 
     if (dirname) {
         const newCwd = path.resolve(cwd, dirname);
-        mkdirp(newCwd);
+        SyncFileUtils.mkdirp(newCwd);
         process.chdir(newCwd);
         cwd = newCwd;
     }
@@ -65,6 +66,9 @@ export async function main () : Promise<void> {
 
     LOG.debug(`Initializing files using `, pkgManager);
     await initFiles(pkgManager);
+
+    LOG.debug(`Initializing sub module: sendanor/typescript from main branch`);
+    SyncGitUtils.initSubModule('git@github.com:sendanor/typescript.git', 'src/fi/nor/ts', 'main');
 
 }
 

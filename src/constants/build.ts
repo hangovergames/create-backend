@@ -19,6 +19,8 @@ export const BUILD_DEFAULT_INSTALLED_PACKAGES = [
     "@rollup/plugin-replace",
     "@rollup/plugin-typescript",
     "typescript",
+    "tslib",
+    "ts-node",
     "rollup-plugin-uglify",
     "rollup",
     "lodash",
