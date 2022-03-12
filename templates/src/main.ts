@@ -1,6 +1,6 @@
 // Copyright (c) CURRENT-YEAR. ORGANISATION-NAME <ORGANISATION-EMAIL>. All rights reserved.
 
-import { ProcessUtils } from "./fi/nor/ts/ProcessUtils";
+import { ProcessUtils } from "./fi/hg/core/ProcessUtils";
 
 // Must be first import to define environment variables before anything else
 ProcessUtils.initEnvFromDefaultFiles();
@@ -11,18 +11,19 @@ import {
     BACKEND_URL
 } from "./constants/runtime";
 
-import { LogService, LogLevel } from "./fi/nor/ts/LogService";
+import { LogService } from "./fi/hg/core/LogService";
+import { LogLevel } from "./fi/hg/core/types/LogLevel";
 
 LogService.setLogLevel(BACKEND_LOG_LEVEL);
 
-import { CommandExitStatus } from "./fi/nor/ts/cmd/types/CommandExitStatus";
-import { RequestClient } from "./fi/nor/ts/RequestClient";
-import { CommandArgumentUtils } from "./fi/nor/ts/cmd/utils/CommandArgumentUtils";
-import { ParsedCommandArgumentStatus } from "./fi/nor/ts/cmd/types/ParsedCommandArgumentStatus";
-import { RequestServer } from "./fi/nor/ts/RequestServer";
+import { CommandExitStatus } from "./fi/hg/core/cmd/types/CommandExitStatus";
+import { RequestClient } from "./fi/hg/core/RequestClient";
+import { CommandArgumentUtils } from "./fi/hg/core/cmd/utils/CommandArgumentUtils";
+import { ParsedCommandArgumentStatus } from "./fi/hg/core/cmd/types/ParsedCommandArgumentStatus";
+import { RequestServer } from "./fi/hg/core/RequestServer";
 import { BackendController } from "./controllers/BackendController";
-import { RequestRouter } from "./fi/nor/ts/requestServer/RequestRouter";
-import { Headers } from "./fi/nor/ts/request/Headers";
+import { RequestRouter } from "./fi/hg/core/requestServer/RequestRouter";
+import { Headers } from "./fi/hg/core/request/Headers";
 import { BUILD_USAGE_URL, BUILD_WITH_FULL_USAGE } from "./constants/build";
 
 const LOG = LogService.createLogger('main');

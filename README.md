@@ -8,8 +8,8 @@ npm init @heusalagroup/backend ./foo-backend
 
 ## Log level
 
-Log level can be changed using `CREATE_BACKEND_LOG_LEVEL`, which defaults to `INFO`.
+Log level can be changed using `LOG_LEVEL`, which defaults to `INFO`.
 
 ```shell
-CREATE_BACKEND_LOG_LEVEL=DEBUG npm init @heusalagroup/backend ./foo-backend
+LOG_LEVEL=DEBUG npm init @heusalagroup/backend ./foo-backend
 ```

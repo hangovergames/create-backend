@@ -4,10 +4,10 @@ import {
     GetMapping,
     RequestHeader,
     RequestMapping,
-} from "../fi/nor/ts/Request";
-import { ReadonlyJsonObject } from "../fi/nor/ts/Json";
-import { ResponseEntity } from "../fi/nor/ts/request/ResponseEntity";
-import { LogService } from "../fi/nor/ts/LogService";
+} from "../fi/hg/core/Request";
+import { ReadonlyJsonObject } from "../fi/hg/core/Json";
+import { ResponseEntity } from "../fi/hg/core/request/ResponseEntity";
+import { LogService } from "../fi/hg/core/LogService";
 
 const LOG = LogService.createLogger('BackendController');
 
