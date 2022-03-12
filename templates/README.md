@@ -2,6 +2,8 @@
 
 ### Start the server in development mode
 
+FIXME: This isn't working right now. Use production mode.
+
 ```
 npm start
 ```
