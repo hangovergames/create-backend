@@ -20,7 +20,7 @@
     "./src/constants/runtime.ts",
     "./src/controllers/BackendController.ts"
   ],
-  "postRename": {
+  "renameFiles": {
     "./gitignore": "./.gitignore"
   },
   "gitSubmodules": [

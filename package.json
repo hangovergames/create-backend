@@ -1,6 +1,6 @@
 {
   "name": "@heusalagroup/create-backend",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create TypeScript enabled NodeJS REST projects inspired from Spring Boot",
   "main": "index.js",
   "bin": "./dist/create-backend.js",
@@ -13,6 +13,8 @@
     "url": "git+https://github.com/hangovergames/create-backend.git"
   },
   "tags": [
+    "template",
+    "create",
     "typescript",
     "backend",
     "rest",
