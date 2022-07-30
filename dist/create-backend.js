@@ -393,10 +393,10 @@ d+"?(?:[a-z\\xdf-\\xf6\\xf8-\\xff]|[^\\ud800-\\udfff\\xac\\xb1\\xd7\\xf7\\x00-\\
 "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])","\\d+",_].join("|"),"g"),ua=a,ca=O,la=S,fa=function(e){
 return e.match(sa)||[]},da=u,pa=A,ha=function(e,t,r){return e=la(e),void 0===(t=r?void 0:t)?(ca(e)?fa:ua)(e):e.match(t
 )||[]},ga=RegExp("['’]","g"),ma=c,Xs=function(e,t,r){return t=t.toLowerCase(),e+(r?ma(t):t)},va=function(e){return da(
-ha(pa(e).replace(ga,"")),Xs,"")};class Nu{constructor(e,t){n(this,"_logger",void 0),n(this,"name",void 0),n(this,
-"_level",void 0),this.name=e,this._logger=t,this._level=void 0}getLogLevel(){var e;return null!=(e=this._level
-)?e:this._logger.getLogLevel()}setLogLevel(e){return this._level=e,this}debug(...e){(
-void 0===this._level||this._level<=r.DEBUG)&&this._logger.debug(`[${this.name}]`,...e)}info(...e){(
+ha(pa(e).replace(ga,"")),Xs,"")},"production".startsWith("%{")&&"production".endsWith("}");class Nu{constructor(e,t){n(
+this,"_logger",void 0),n(this,"name",void 0),n(this,"_level",void 0),this.name=e,this._logger=t,this._level=void 0}
+getLogLevel(){var e;return null!=(e=this._level)?e:this._logger.getLogLevel()}setLogLevel(e){return this._level=e,this}
+debug(...e){(void 0===this._level||this._level<=r.DEBUG)&&this._logger.debug(`[${this.name}]`,...e)}info(...e){(
 void 0===this._level||this._level<=r.INFO)&&this._logger.info(`[${this.name}]`,...e)}warn(...e){(
 void 0===this._level||this._level<=r.WARN)&&this._logger.warn(`[${this.name}]`,...e)}error(...e){(
 void 0===this._level||this._level<=r.ERROR)&&this._logger.error(`[${this.name}]`,...e)}}class Cu{static setLogLevel(e){

@@ -28,6 +28,11 @@
       "url": "git@github.com:heusalagroup/fi.hg.core.git",
       "path": "src/fi/hg/core",
       "branch": "main"
+    },
+    {
+      "url": "git@github.com:heusalagroup/fi.hg.backend.git",
+      "path": "src/fi/hg/backend",
+      "branch": "main"
     }
   ],
   "packages": [

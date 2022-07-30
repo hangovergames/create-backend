@@ -1,12 +1,20 @@
 # @heusalagroup/create-backend
 
-Create TypeScript enabled NodeJS REST backends inspired from Java Spring Boot:
+Kickstart NodeJS REST backend projects with TypeScript in the familiar style 
+inspired from Java Spring Boot:
+
+See [HG Backend Guide](https://docs.hg.fi/backend/) for complete introduction to
+our style of NodeJS backends.
+
+### Usage
 
 ```shell
 npm init @heusalagroup/backend ./foo-backend
 ```
 
-## Log level
+This command will create a minimal backend project.
+
+### Increase log level for debugging
 
 Log level can be changed using `LOG_LEVEL`, which defaults to `INFO`.
 
@@ -14,7 +22,28 @@ Log level can be changed using `LOG_LEVEL`, which defaults to `INFO`.
 LOG_LEVEL=DEBUG npm init @heusalagroup/backend ./foo-backend
 ```
 
+### Building the project
+
+```shell
+npm run build
+```
+
+### Testing locally
+
+Install development version globally:
+
+```shell
+npm install -g .
+```
+
+Use locally installed version to kickstart a backend project:
+
+```shell
+create-backend ./foo-backend
+```
+
 ### License
 
-Copyright (c) Heusala Group. All rights reserved. Licensed under the MIT License (the "[License](./LICENSE)");
+Copyright (c) Heusala Group. All rights reserved. Licensed under the MIT License 
+(the "[License](./LICENSE)");
 
