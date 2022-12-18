@@ -30,6 +30,11 @@
       "branch": "main"
     },
     {
+      "url": "git@github.com:heusalagroup/fi.hg.node.git",
+      "path": "src/fi/hg/node",
+      "branch": "main"
+    },
+    {
       "url": "git@github.com:heusalagroup/fi.hg.backend.git",
       "path": "src/fi/hg/backend",
       "branch": "main"

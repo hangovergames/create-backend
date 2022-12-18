@@ -20,9 +20,9 @@ import { CommandExitStatus } from "./fi/hg/core/cmd/types/CommandExitStatus";
 import { RequestClient } from "./fi/hg/core/RequestClient";
 import { CommandArgumentUtils } from "./fi/hg/core/cmd/utils/CommandArgumentUtils";
 import { ParsedCommandArgumentStatus } from "./fi/hg/core/cmd/types/ParsedCommandArgumentStatus";
-import { RequestServer } from "./fi/hg/core/RequestServer";
+import { RequestServer } from "./fi/hg/node/RequestServer";
 import { BackendController } from "./controllers/BackendController";
-import { RequestRouter } from "./fi/hg/core/requestServer/RequestRouter";
+import { RequestRouter } from "./fi/hg/node/requestServer/RequestRouter";
 import { Headers } from "./fi/hg/core/request/Headers";
 import { BUILD_USAGE_URL, BUILD_WITH_FULL_USAGE } from "./constants/build";
 
