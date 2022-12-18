@@ -1,6 +1,6 @@
 {
   "preferredPackageSystem": "npm",
-  "gitOrganization": "@heusalagroup",
+  "gitOrganization": "heusalagroup",
   "organizationName": "Heusala Group",
   "organizationEmail": "info@heusalagroup.fi",
   "sourceDir": "./src",
