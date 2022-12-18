@@ -57,7 +57,7 @@
     "typescript",
     "tslib",
     "ts-node",
-    "rollup-plugin-uglify",
+    "heusalagroup/rollup-plugin-uglify",
     "rollup",
     "lodash"
   ],
