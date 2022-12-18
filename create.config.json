@@ -18,7 +18,11 @@
     "./src/main.ts",
     "./src/constants/build.ts",
     "./src/constants/runtime.ts",
-    "./src/controllers/BackendController.ts"
+    "./src/controllers/BackendController.ts",
+    "./scripts/get-all-branches.sh",
+    "./scripts/set-branch-main.sh",
+    "./scripts/pull-all.sh",
+    "./scripts/push-all.sh"
   ],
   "renameFiles": {
     "./gitignore": "./.gitignore"
