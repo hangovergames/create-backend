@@ -453,7 +453,7 @@ for(;!R.directoryExits(e)&&(n.push(e),e!==(t=bu.default.dirname(e)));)e=t;for(;1
 static readTextFile(e){return wu.default.readFileSync(e,"utf8")}static fileExists(e){return wu.default.existsSync(e)}
 static readJsonFile(e){return JSON.parse(R.readTextFile(e))}static writeTextFile(e,t){wu.default.writeFileSync(e,t,{
 encoding:"utf8"})}static writeJsonFile(e,t){t=JSON.stringify(t,null,2);R.writeTextFile(e,t)}
-static copyTextFileWithReplacements(e,t,r){let n=R.readTextFile(e);K(r).forEach(e=>{var t=r[e];n=n.replace(e,t)}),
+static copyTextFileWithReplacements(e,t,r){let n=R.readTextFile(e);K(r).forEach(e=>{var t=r[e];n=n.replaceAll(e,t)}),
 R.writeTextFile(t,n)}static copyTextFileWithReplacementsIfMissing(e,t,r){R.fileExists(t)?Ru.warn(
 "Warning! File already exists: ",t):R.copyTextFileWithReplacements(e,t,r)}}ba={},wa={},Ns={exports:{}},I={exports:{}},
 T=function(e){try{return e()}catch(e){}},(l=function(r,n,o){xa.stat(r,function(e,t){o(e,!e&&ne(t,r,n))})}
