@@ -19,6 +19,13 @@ npm install -g @heusalagroup/backend
 create-backend ./foo-backend
 ```
 
+This command also accepts any argument from the `npm init` command. For example,
+you can call it with `--yes` to answer "yes" to every question:
+
+```shell
+create-backend ./foo-backend --yes
+```
+
 To increase the log level for debugging, set the `LOG_LEVEL` environment 
 variable:
 
