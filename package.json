@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hangovergames/create-backend.git"
+    "url": "git+https://github.com/heusalagroup/create-backend.git"
   },
   "tags": [
     "template",
@@ -26,9 +26,9 @@
   "author": "Jaakko Heusala <jhh@heusalagroup.fi>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hangovergames/create-backend/issues"
+    "url": "https://github.com/heusalagroup/create-backend/issues"
   },
-  "homepage": "https://github.com/hangovergames/create-backend#readme",
+  "homepage": "https://github.com/heusalagroup/create-backend#readme",
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/lodash": "^4.14.191",
