@@ -29,17 +29,17 @@
   },
   "gitSubmodules": [
     {
-      "url": "git@github.com:heusalagroup/fi.hg.core.git",
+      "url": "https://github.com/heusalagroup/fi.hg.core.git",
       "path": "src/fi/hg/core",
       "branch": "main"
     },
     {
-      "url": "git@github.com:heusalagroup/fi.hg.node.git",
+      "url": "https://github.com/heusalagroup/fi.hg.node.git",
       "path": "src/fi/hg/node",
       "branch": "main"
     },
     {
-      "url": "git@github.com:heusalagroup/fi.hg.backend.git",
+      "url": "https://github.com/heusalagroup/fi.hg.backend.git",
       "path": "src/fi/hg/backend",
       "branch": "main"
     }
