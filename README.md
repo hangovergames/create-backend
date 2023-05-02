@@ -1,3 +1,5 @@
+**Join our [Discord](https://discord.gg/UBTrHxA78f) to discuss about our software!**
+
 # @heusalagroup/create-backend
 
 A command-line tool to easily create NodeJS REST backend projects with
