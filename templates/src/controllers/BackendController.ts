@@ -1,12 +1,10 @@
 // Copyright (c) CURRENT-YEAR. ORGANISATION-NAME <ORGANISATION-EMAIL>. All rights reserved.
 
-import {
-    GetMapping,
-    RequestHeader,
-    RequestMapping,
-} from "../fi/hg/core/Request";
+import { GetMapping } from "../fi/hg/core/request/GetMapping";
+import { RequestHeader } from "../fi/hg/core/request/RequestHeader";
+import { RequestMapping } from "../fi/hg/core/request/RequestMapping";
 import { ReadonlyJsonObject } from "../fi/hg/core/Json";
-import { ResponseEntity } from "../fi/hg/core/request/ResponseEntity";
+import { ResponseEntity } from "../fi/hg/core/request/types/ResponseEntity";
 import { LogService } from "../fi/hg/core/LogService";
 
 const LOG = LogService.createLogger('BackendController');

@@ -22,8 +22,8 @@ import { CommandArgumentUtils } from "./fi/hg/core/cmd/utils/CommandArgumentUtil
 import { ParsedCommandArgumentStatus } from "./fi/hg/core/cmd/types/ParsedCommandArgumentStatus";
 import { RequestServer } from "./fi/hg/node/RequestServer";
 import { BackendController } from "./controllers/BackendController";
-import { RequestRouter } from "./fi/hg/node/requestServer/RequestRouter";
-import { Headers } from "./fi/hg/core/request/Headers";
+import { RequestRouterImpl } from "./fi/hg/core/requestServer/RequestRouterImpl";
+import { Headers } from "./fi/hg/core/request/types/Headers";
 import { BUILD_USAGE_URL, BUILD_WITH_FULL_USAGE } from "./constants/build";
 
 const LOG = LogService.createLogger('main');
@@ -35,7 +35,7 @@ export async function main (
     try {
 
         Headers.setLogLevel(LogLevel.INFO);
-        RequestRouter.setLogLevel(LogLevel.INFO);
+        RequestRouterImpl.setLogLevel(LogLevel.INFO);
         RequestClient.setLogLevel(LogLevel.INFO);
         RequestServer.setLogLevel(LogLevel.INFO);
 
