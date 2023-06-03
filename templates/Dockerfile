@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:14
+ARG NODE_IMAGE=node:18
 
 FROM $NODE_IMAGE as node-image
 
@@ -17,11 +17,11 @@ ENV BACKEND_URL='http://0.0.0.0:3500'
 
 WORKDIR /app
 COPY ./package*.json ./
-RUN npm ci --silent --also=dev
+RUN npm ci --also=dev
 COPY tsconfig.json ./tsconfig.json
 COPY rollup.config.js ./rollup.config.js
 COPY babel.config.json ./babel.config.json
 COPY src ./src
 RUN npm run build
 
-CMD npm -s run start-prod
+CMD [ "node", "./dist/create-backend.js" ]
