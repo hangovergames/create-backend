@@ -31,9 +31,7 @@ const LOG = LogService.createLogger('main');
 export async function main (
     args: string[] = []
 ) : Promise<CommandExitStatus> {
-
     try {
-
         Headers.setLogLevel(LogLevel.INFO);
         RequestRouterImpl.setLogLevel(LogLevel.INFO);
         RequestClient.setLogLevel(LogLevel.INFO);
@@ -58,7 +56,6 @@ export async function main (
         server.start();
 
         let serverListener : any = undefined;
-
         const stopPromise = new Promise<void>((resolve, reject) => {
             try {
                 LOG.debug('Stopping server from RequestServer stop event');
@@ -70,7 +67,6 @@ export async function main (
                 reject(err);
             }
         });
-
         ProcessUtils.setupDestroyHandler( () => {
 
             LOG.debug('Stopping server from process utils event');
@@ -85,16 +81,13 @@ export async function main (
         }, (err : any) => {
             LOG.error('Error while shutting down the service: ', err);
         });
-
         await stopPromise;
 
         return CommandExitStatus.OK;
-
     } catch (err) {
         LOG.error(`Fatal error: `, err);
         return CommandExitStatus.FATAL_ERROR;
     }
-
 }
 
 /**

@@ -16,10 +16,10 @@ git submodule update --init --recursive
 npm run build
 ```
 
-### Start the server in production mode locally
+### Start the server locally
 
 ```
-npm run start-prod
+node ./dist/PROJECT-NAME.js
 ```
 
 ...and open http://0.0.0.0:3000
@@ -42,7 +42,31 @@ This is the easiest way to run the full environment.
 docker-compose up
 ```
 
-## Other development guides
+### Building the service using Docker in production mode
+
+This docker setup does not actually use TypeScript tools to compile the backend 
+again.
+
+You need to have a compiled version available at `./dist/PROJECT-NAME.js`. You 
+can also save it in git if you like to have compiled version available always.
+
+```bash
+docker-compose -f docker-compose.prod.yml build
+```
+
+And start the server:
+
+```bash
+docker-compose -f docker-compose.prod.yml up
+```
+
+## Other development scripts
+
+To use our bundled scripts you need to set execution bit:
+
+```bash 
+chmod +x ./scripts/*.sh
+```
 
 ### Listing state of git modules
 
@@ -69,6 +93,14 @@ main    src/fi/hg/create
 ```
 
 ...unless you want to use some other branch...
+
+### Adding new submodule
+
+Here is how to add `fi.hg.pg` git submodule to your project:
+
+```bash
+./scripts/add-hg-module.sh pg
+```
 
 ### Changing all git modules to the `main` branch
 
