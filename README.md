@@ -11,7 +11,7 @@ our style of NodeJS backends, check out [HG.fi](https://hg.fi/).
 To create a minimal backend project, run either of the following commands:
 
 ```shell
-npm init @heusalagroup/create-backend ./foo-backend
+npm init @heusalagroup/backend ./foo-backend
 ```
 
 ...or..
@@ -32,7 +32,7 @@ To increase the log level for debugging, set the `LOG_LEVEL` environment
 variable:
 
 ```shell
-LOG_LEVEL=DEBUG npm init @heusalagroup/create-backend ./foo-backend
+LOG_LEVEL=DEBUG npm init @heusalagroup/backend ./foo-backend
 ```
 
 ## Development
