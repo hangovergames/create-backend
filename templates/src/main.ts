@@ -16,11 +16,13 @@ import { LogLevel } from "./fi/hg/core/types/LogLevel";
 
 LogService.setLogLevel(BACKEND_LOG_LEVEL);
 
+import { RequestClientImpl } from "./fi/hg/core/RequestClientImpl";
 import { CommandExitStatus } from "./fi/hg/core/cmd/types/CommandExitStatus";
-import { RequestClient } from "./fi/hg/core/RequestClient";
 import { CommandArgumentUtils } from "./fi/hg/core/cmd/utils/CommandArgumentUtils";
 import { ParsedCommandArgumentStatus } from "./fi/hg/core/cmd/types/ParsedCommandArgumentStatus";
-import { RequestServer } from "./fi/hg/node/RequestServer";
+import { ServerServiceImpl } from "./fi/hg/node/requestServer/ServerServiceImpl";
+import { RequestServerImpl } from "./fi/hg/node/RequestServerImpl";
+import { RequestServerEvent } from "./fi/hg/core/RequestServer";
 import { BackendController } from "./controllers/BackendController";
 import { RequestRouterImpl } from "./fi/hg/core/requestServer/RequestRouterImpl";
 import { Headers } from "./fi/hg/core/request/types/Headers";
@@ -34,8 +36,8 @@ export async function main (
     try {
         Headers.setLogLevel(LogLevel.INFO);
         RequestRouterImpl.setLogLevel(LogLevel.INFO);
-        RequestClient.setLogLevel(LogLevel.INFO);
-        RequestServer.setLogLevel(LogLevel.INFO);
+        RequestClientImpl.setLogLevel(LogLevel.INFO);
+        RequestServerImpl.setLogLevel(LogLevel.INFO);
 
         LOG.debug(`Loglevel as ${LogService.getLogLevelString()}`);
 
@@ -51,7 +53,10 @@ export async function main (
             return exitStatus;
         }
 
-        const server = new RequestServer(BACKEND_URL);
+        const server = RequestServerImpl.create(
+            ServerServiceImpl.create(BACKEND_URL),
+            RequestRouterImpl.create(),
+        );
         server.attachController(BackendController);
         server.start();
 
@@ -59,7 +64,7 @@ export async function main (
         const stopPromise = new Promise<void>((resolve, reject) => {
             try {
                 LOG.debug('Stopping server from RequestServer stop event');
-                serverListener = server.on(RequestServer.Event.STOPPED, () => {
+                serverListener = server.on(RequestServerEvent.STOPPED, () => {
                     serverListener = undefined;
                     resolve();
                 });
